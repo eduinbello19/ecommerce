@@ -1,0 +1,395 @@
+/* ==========================================================================
+   RESET Y VARIABLES GLOBALES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fondo: #0e0e10;
+    --tarjeta-bg: #16161a;
+    --entrada-bg: #09090b;
+    --color-resaltado: #ccff00;
+    --blanco: #ffffff;
+    --gris: #888890;
+    --oscuro: #55555e;
+    --borde: #27272e;
+    --fuente: 'Consolas', 'Cascadia Code', 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--blanco);
+    font-family: var(--fuente);
+    font-size: 12px;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+mark {
+    background: transparent;
+    color: inherit;
+}
+
+fieldset {
+    border: none;
+}
+
+/* CLASE GLOBAL DE APOYO */
+.resaltado {
+    color: var(--color-resaltado) !important;
+}
+
+/* ==========================================================================
+   HEADER Y FOOTER PRINCIPALES
+   ========================================================================== */
+body > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid var(--borde);
+    background-color: #000000;
+}
+
+body > header h1 {
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+body > header small {
+    color: var(--gris);
+    font-size: 11px;
+    font-weight: normal;
+}
+
+body > header nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+body > header small:first-child {
+    border: 1px solid var(--borde);
+    padding: 4px 8px;
+}
+
+body > header a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+body > header a:hover {
+    color: var(--color-resaltado);
+}
+
+/* ==========================================================================
+   CONTENEDOR GRID PRINCIPAL (MAIN)
+   ========================================================================== */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+main > section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+main > section > header:first-child {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+}
+
+main > section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 1px;
+}
+
+main > section > p {
+    color: var(--gris);
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   ESTRUCTURA DE TARJETAS GENERALES
+   ========================================================================== */
+.tarjeta {
+    background-color: var(--tarjeta-bg);
+    border: 1px solid var(--borde);
+    padding: 20px;
+}
+
+figure.tarjeta {
+    background-color: #000000;
+    padding: 10px;
+}
+
+figure.tarjeta img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%);
+}
+
+figure.tarjeta figcaption {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--gris);
+    text-align: center;
+}
+
+.tarjeta h3 {
+    font-size: 12px;
+    color: var(--blanco);
+    margin-bottom: 15px;
+}
+
+.tarjeta ol {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tarjeta li {
+    color: var(--gris);
+    font-size: 11px;
+}
+
+main > section > footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--oscuro);
+    border-top: 1px dashed var(--borde);
+    padding-top: 15px;
+}
+
+/* ==========================================================================
+   FORMULARIO Y CONTENEDOR DERECHO
+   ========================================================================== */
+section.tarjeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+section.tarjeta > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 15px;
+    color: var(--gris);
+}
+
+section.tarjeta > header h3 {
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+}
+
+section.tarjeta > header nav {
+    display: flex;
+    gap: 5px;
+}
+
+section.tarjeta > header i {
+    width: 8px;
+    height: 8px;
+    background-color: var(--borde);
+    display: inline-block;
+    font-style: normal;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 25px 0;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+form > div > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    border: none;
+    padding: 0;
+}
+
+form label {
+    color: var(--blanco);
+    font-weight: 600;
+}
+
+form small {
+    color: var(--oscuro);
+}
+
+form a {
+    color: var(--gris);
+    text-decoration: none;
+}
+
+.entrada {
+    display: flex;
+    align-items: center;
+    background-color: var(--entrada-bg);
+    border: 1px solid var(--borde);
+    padding: 0 12px;
+}
+
+.entrada input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--color-resaltado);
+    padding: 12px;
+    font-family: var(--fuente);
+}
+
+.entrada b {
+    color: var(--oscuro);
+    font-style: normal;
+    font-weight: normal;
+}
+
+form > div:nth-child(3) {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    color: var(--gris);
+}
+
+form input[type="checkbox"] {
+    accent-color: var(--color-resaltado);
+}
+
+.boton {
+    background-color: var(--color-resaltado);
+    color: #000000;
+    border: none;
+    padding: 14px;
+    font-family: var(--fuente);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 12px;
+    text-align: center;
+}
+
+.boton:hover {
+    opacity: 0.9;
+}
+
+.divisor {
+    text-align: center;
+    color: var(--oscuro);
+    font-size: 10px;
+    margin: 5px 0;
+}
+
+fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.boton.social {
+    background-color: var(--entrada-bg);
+    border: 1px solid var(--borde);
+    color: var(--blanco);
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.boton.social:hover {
+    border-color: var(--gris);
+}
+
+.tarjeta.secundaria {
+    background-color: #0a0a0c;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.tarjeta.secundaria header {
+    border: none;
+    padding: 0;
+}
+
+.tarjeta.secundaria h4 {
+    color: var(--blanco);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.tarjeta.secundaria p {
+    color: var(--oscuro);
+    font-size: 10px;
+}
+
+.tarjeta.secundaria a {
+    color: var(--color-resaltado);
+    text-decoration: none;
+    font-size: 10px;
+}
+
+/* ==========================================================================
+   FOOTER GENERAL
+   ========================================================================== */
+body > footer {
+    background-color: #000000;
+    border-top: 1px solid var(--borde);
+    font-size: 10px;
+    color: var(--oscuro);
+}
+
+body > footer > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+body > footer > div:first-child {
+    border-bottom: 1px solid #141416;
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
