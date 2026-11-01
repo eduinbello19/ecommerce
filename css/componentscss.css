@@ -1,0 +1,336 @@
+/* Botones principales */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 24px;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border: 0;
+  transition: filter .15s, background .15s, transform .1s;
+}
+
+.btn.lime {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.btn.lime:hover {
+  filter: brightness(1.08);
+}
+
+.btn.dark {
+  background: var(--field);
+  color: var(--text);
+}
+
+.btn.dark:hover {
+  background: #34363b;
+}
+
+.cta {
+  width: 100%;
+  min-height: 56px;
+  background: var(--lime);
+  color: var(--lime-ink);
+  border: 0;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  text-align: center;
+  transition: filter .15s, transform .1s;
+}
+
+.cta:hover {
+  filter: brightness(1.08);
+}
+
+.cta:active {
+  transform: translateY(1px);
+}
+
+.cta[disabled] {
+  opacity: .6;
+  cursor: progress;
+}
+
+/* Badges y Tags */
+.tag {
+  display: inline-block;
+  background: var(--field);
+  color: var(--lime);
+  padding: 5px 10px;
+}
+
+.tag::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--lime);
+  margin-right: 8px;
+}
+
+.eyebrow {
+  color: var(--lime);
+  margin-bottom: 12px;
+}
+
+.proto {
+  margin-bottom: 12px;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.proto b {
+  color: var(--lime);
+}
+
+/* Campos de Formulario */
+.f {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.lrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+  flex-wrap: wrap;
+}
+
+label, .lbl {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #b0b2b8;
+}
+
+label em, .lbl em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.lrow small {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--input);
+  border: 1px solid var(--line);
+  transition: border-color .15s;
+}
+
+.field:hover {
+  border-color: #5a5d66;
+}
+
+.field:focus-within {
+  border-color: var(--lime);
+  box-shadow: 0 0 0 1px var(--lime);
+}
+
+.field>svg {
+  position: absolute;
+  left: 14px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.field input {
+  width: 100%;
+  min-height: 48px;
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  font: 400 .9rem var(--mono);
+  letter-spacing: .06em;
+  padding: 12px 14px 12px 44px;
+  border-radius: 0;
+}
+
+.field input:focus {
+  outline: none;
+}
+
+.field input::placeholder {
+  color: #5f6168;
+}
+
+.field.err {
+  border-color: #ff5a5a;
+}
+
+/* Input nativos con clase genérica o estándar */
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=password],
+select,
+textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text);
+  font: inherit;
+  font-size: .95rem;
+  padding: 12px 14px;
+  min-height: 48px;
+  border-radius: 0;
+  transition: border-color .15s;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b6d74;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #5a5d66;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--lime);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--lime);
+}
+
+/* Checkbox personalizado */
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  color: #c9cbd0;
+}
+
+.check input {
+  appearance: none;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--line);
+  background: var(--field);
+  margin-top: 2px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.check input:checked {
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.check input:checked::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border: 2px solid var(--lime-ink);
+  border-top: 0;
+  border-right: 0;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+/* Divisor O */
+.or {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.or::before,
+.or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Botones sociales OAuth */
+.social {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.social button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  background: var(--field);
+  color: var(--text);
+  border: 0;
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px;
+  transition: background .15s;
+}
+
+.social button:hover {
+  background: #303136;
+}
+
+/* Feedback y mensajes */
+.msg {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .06em;
+  min-height: 1.2em;
+}
+
+.msg.err {
+  color: #ff7a7a;
+}
+
+.ok-box {
+  display: none;
+  background: var(--field);
+  border-left: 3px solid var(--lime);
+  padding: 14px 16px;
+  font-size: .9rem;
+  color: #c9cbd0;
+}
+
+.ok-box.show {
+  display: block;
+}

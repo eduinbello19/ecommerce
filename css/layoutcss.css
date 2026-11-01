@@ -1,0 +1,384 @@
+
+/* Barra superior de anuncios (Ticker) */
+.ticker {
+  background: var(--deep);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  padding: 6px 0;
+}
+
+.ticker .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: .62rem;
+}
+
+.ticker b {
+  color: var(--lime);
+}
+
+.ticker .mid {
+  color: var(--text);
+}
+
+/* Cabecera Principal */
+header.site {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(17, 18, 20, .94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+header.site .wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 68px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  background: var(--lime);
+  color: var(--ink);
+  font: 800 .6rem/1 var(--display);
+  display: grid;
+  place-items: center;
+}
+
+.brand b {
+  font: 800 1.1rem/1 var(--display);
+  display: block;
+}
+
+.brand small {
+  color: var(--muted);
+  font: .6rem var(--mono);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+nav.main {
+  display: flex;
+  gap: clamp(12px, 1.8vw, 26px);
+  font: .72rem var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+nav.main a {
+  padding: 8px 0;
+  color: #c9cbd0;
+  transition: color .15s;
+}
+
+nav.main a:hover,
+nav.main a.on {
+  color: var(--lime);
+}
+
+.tools {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  background: var(--deep);
+  padding: 0 10px;
+  min-height: 36px;
+  width: clamp(160px, 18vw, 260px);
+  color: var(--muted);
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  color: var(--text);
+  font: .65rem var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.search kbd {
+  font: .6rem var(--mono);
+  background: var(--field);
+  padding: 1px 5px;
+}
+
+.cur {
+  display: flex;
+  border: 1px solid var(--line);
+  font: .62rem var(--mono);
+}
+
+.cur span {
+  padding: 5px 8px;
+  color: var(--muted);
+}
+
+.cur .on {
+  background: var(--lime);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.icon-btn {
+  position: relative;
+  background: none;
+  border: 0;
+  min-width: 40px;
+  min-height: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.icon-btn i {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  font: 700 .55rem var(--mono);
+  font-style: normal;
+  background: var(--field);
+  padding: 0 4px;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  padding: 0 10px;
+  min-height: 36px;
+  font: .68rem var(--mono);
+  letter-spacing: .1em;
+}
+
+.cart b {
+  background: var(--lime);
+  color: var(--ink);
+  padding: 0 6px;
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  width: 40px;
+  height: 40px;
+  place-items: center;
+}
+
+/* Barra superior alternativa (Auth / Soporte) */
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px var(--gap);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.bar nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.bar a.back {
+  color: var(--lime);
+}
+
+/* Pie de página principal */
+footer.site {
+  padding-top: clamp(40px, 6vw, 72px);
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.fgrid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 32px;
+  padding-bottom: 40px;
+}
+
+.fgrid p {
+  color: var(--muted);
+  font-size: .8rem;
+  max-width: 38ch;
+  margin: 14px 0 16px;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chips span {
+  border: 1px solid var(--lime);
+  color: var(--lime);
+  padding: 3px 8px;
+  font-size: .6rem;
+}
+
+.fgrid h4 {
+  font: 700 .72rem var(--mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.fgrid li {
+  margin-bottom: 10px;
+  font-size: .82rem;
+  color: #b0b2b8;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.fgrid li a:hover {
+  color: var(--lime);
+}
+
+.fgrid li span {
+  font: .58rem var(--mono);
+  color: var(--muted);
+}
+
+.fbot {
+  border-top: 1px solid var(--line);
+  padding-block: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  align-items: center;
+}
+
+.fbot .l b {
+  color: var(--lime);
+  font-weight: 400;
+}
+
+.fbot .pay {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fbot .pay span {
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  font-size: .6rem;
+}
+
+/* Pie de página minimalista (Auth) */
+footer.auth-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 20px var(--gap);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  background: var(--bg);
+}
+
+footer.auth-foot .ok {
+  color: var(--lime);
+  font-weight: 700;
+}
+
+/* Responsividad global del layout */
+@media (max-width: 1180px) {
+  .search {
+    display: none;
+  }
+  .fgrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 960px) {
+  .burger {
+    display: grid;
+  }
+  nav.main {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    gap: 0;
+    padding: 8px var(--gap) 16px;
+    display: none;
+  }
+  nav.main.open {
+    display: flex;
+  }
+  nav.main a {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .tools {
+    gap: 6px;
+  }
+  .ticker .mid {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .fgrid {
+    grid-template-columns: 1fr;
+  }
+  .fbot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ticker .wrap {
+    justify-content: space-between;
+  }
+  .ticker .loc {
+    display: none;
+  }
+  .cur {
+    display: none;
+  }
+  .bar nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  footer.auth-foot {
+    flex-direction: column;
+  }
+}

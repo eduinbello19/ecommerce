@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colección · Camisetas Gráficas &amp; Oversized · KULT STUDIO</title>
+  <meta name="description"
+    content="Catálogo técnico SS25 Serie 04 de KULT STUDIO. Algodón orgánico 280-350 GSM, siluetas oversized y boxy fit con envíos en Colombia.">
+
+  <!-- Estilos modulares -->
+  <link rel="stylesheet" href="css/basecss.css">
+  <link rel="stylesheet" href="css/layoutcss.css">
+  <link rel="stylesheet" href="css/componentscss.css">
+  <link rel="stylesheet" href="css/colectioncss.css">
+
+</head>
+
+<body>
+
+  <!-- Barra superior informativa -->
+  <div class="ticker mono">
+    <div class="wrap">
+      <span><b>■</b> System // Online</span>
+      <span class="mid">Drop 04 / Catálogo oficial • Envíos a todo el país • Unidades numeradas</span>
+      <span class="loc">Loc: BOG // Colombia &nbsp; <b>V.4.02</b></span>
+    </div>
+  </div>
+
+  <!-- Cabecera y Navegación Principal -->
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="logo" aria-hidden="true">KULT</span>
+        <span><b>KULT</b><small>Studio // Lab</small></span>
+      </a>
+
+      <nav class="main" id="nav" aria-label="Navegación principal">
+        <a href="coleccion.html" class="on" aria-current="page">Colección</a>
+        <a href="index.html#piezas">Novedades</a>
+        <a href="coleccion.html">Gráficas</a>
+        <a href="index.html#categorias">Oversized</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="login.html">Acceso Clientes</a>
+      </nav>
+
+      <div class="tools">
+        <label class="search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4-4" />
+          </svg>
+          <input type="search" placeholder="Buscar prendas..." aria-label="Buscar">
+          <kbd>⌘K</kbd>
+        </label>
+
+        <span class="cur">COP</span>
+
+        <button class="icon-btn" aria-label="Favoritos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 21s-8-5-8-11a5 5 0 019-3 5 5 0 019 3c0 6-8 11-8 11z" />
+          </svg>
+          <i>0</i>
+        </button>
+
+        <a class="cart" href="#" aria-label="Carrito de compras">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M5 7h14l-1 14H6zM9 7a3 3 0 016 0" />
+          </svg>
+          <span class="mono" style="font-size:.65rem">Carrito</span>
+          <b>02</b>
+        </a>
+
+        <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Encabezado de Página -->
+  <section class="phead">
+    <div class="wrap">
+      <div class="row">
+        <div>
+          <p class="eyebrow mono">Catálogo técnico SS25 // Serie 04</p>
+          <h1>Colección / Camisetas gráficas &amp; oversized</h1>
+        </div>
+        <div class="ctrl">
+          <div class="mono">Catálogo activo: <b>24 productos disponibles</b></div>
+          <label class="mono">Ordenar:
+            <select aria-label="Ordenar productos">
+              <option>Más recientes</option>
+              <option>Precio: menor a mayor</option>
+              <option>Precio: mayor a menor</option>
+              <option>Más vendidos</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="strip mono">
+      <div class="wrap">
+        <span><span class="a">Algodón orgánico peinado</span> &nbsp;•&nbsp; Serigrafía de alta densidad &nbsp;•&nbsp;
+          Corte arquitectónico caído</span>
+        <span>Producción limitada: <b>150 uds / modelo</b></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenedor Principal: Filtros + Catálogo -->
+  <main class="wrap">
+    <div class="layout">
+      <!-- Filtros Laterales -->
+      <aside class="filters" id="filters" aria-label="Filtros de catálogo">
+        <div class="fh">
+          <h2 class="mono">☰ Filtros sistema</h2>
+          <button type="button" id="clear">[Limpiar]</button>
+        </div>
+
+        <div class="grp">
+          <h3>Patrón &amp; corte <span>[04]</span></h3>
+          <label class="opt"><input type="checkbox" checked>Oversized Silhouette<em>12</em></label>
+          <label class="opt"><input type="checkbox" checked>Boxy Fit Estructurado<em>08</em></label>
+          <label class="opt"><input type="checkbox">Drop Shoulder Pesado<em>03</em></label>
+          <label class="opt"><input type="checkbox">Regular Fit Clásico<em>01</em></label>
+        </div>
+
+        <div class="grp">
+          <h3>Gramaje textil <span>GSM</span></h3>
+          <label class="opt"><input type="checkbox" checked>Heavyweight (280+ GSM)<em class="l">CORE</em></label>
+          <label class="opt"><input type="checkbox">Ultra-Heavy (350 GSM Raw)<em>SPEC</em></label>
+          <label class="opt"><input type="checkbox">Midweight (220 GSM Summer)<em>LIGHT</em></label>
+        </div>
+
+        <div class="grp">
+          <h3>Dimensión // Talla <span style="text-decoration:underline">GUÍA</span></h3>
+          <div class="sizes" id="sizes">
+            <button type="button" aria-pressed="false">XS</button>
+            <button type="button" aria-pressed="true">S</button>
+            <button type="button" aria-pressed="true">M</button>
+            <button type="button" aria-pressed="true">L</button>
+            <button type="button" aria-pressed="false">XL</button>
+            <button type="button" aria-pressed="false">XXL</button>
+          </div>
+        </div>
+
+        <div class="grp">
+          <h3>Pigmento</h3>
+          <label class="opt pig"><i class="sw" style="background:#111;border:1px solid #333"></i>Negro Obsidiana<em
+              class="l">14</em></label>
+          <label class="opt pig"><i class="sw" style="background:#f2efe8"></i>Blanco Roto Natural<em>05</em></label>
+          <label class="opt pig"><i class="sw" style="background:#3a3b3f"></i>Gris Lavado Mineral<em>03</em></label>
+          <label class="opt pig"><i class="sw" style="background:var(--lime)"></i>Verde Ácido Cyber<em>02</em></label>
+        </div>
+
+        <div class="grp">
+          <h3>Estado de lanzamiento</h3>
+          <label class="opt"><input type="radio" name="est" checked>En Stock (Envío 24h Colombia)</label>
+          <label class="opt"><input type="radio" name="est">Pre-order Drop 05</label>
+          <label class="opt"><input type="radio" name="est">Exclusivo Online Lab</label>
+        </div>
+
+        <div class="dens">
+          <div class="t mono"><span>Densidad media drop</span><b>310 GSM</b></div>
+          <div class="bar"><i></i></div>
+          <p>Nuestros tejidos resisten más de 200 lavados sin deformación de cuello o pérdida de opacidad.</p>
+        </div>
+      </aside>
+
+      <!-- Grilla de Productos -->
+      <div>
+        <button class="fbtn" id="fbtn" aria-expanded="false" aria-controls="filters">
+          <span>☰ Filtros sistema</span>
+          <span id="fcount" style="color:var(--lime)">[04]</span>
+        </button>
+
+        <div class="active mono">
+          <span>Filtros activos:</span>
+          <button type="button">Oversized Silhouette ×</button>
+          <button type="button">Boxy Fit ×</button>
+          <button type="button">280+ GSM ×</button>
+          <button type="button" class="l">Tallas: S, M, L ×</button>
+        </div>
+
+        <div class="grid" id="grid">
+          <!-- Card 1 con imagen de catálogo -->
+          <article class="card">
+            <div class="img">
+              <img src="img/img1.webp" alt="Camiseta System Override Heavy Tee" loading="lazy">
+              <span class="code mono">KULT // SS25-01</span>
+              <span class="bdg mono">Nuevo drop</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b>Boxy Fit - 300 GSM</b><span><i></i><i class="w"></i></span></div>
+              <h3>System Override Heavy Tee</h3>
+              <p>Serigrafía cuádruple tinta plastisol mate y corte arquitectónico de caída recta.</p>
+              <div class="buy">
+                <strong>$229.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card">
+            <div class="img white">
+              <div class="ph" role="img" aria-label="Camiseta blanca Acid Logic"></div>
+              <span class="code mono">KULT // SS25-02</span>
+              <span class="bdg d mono">Top ventas</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b style="color:var(--text)">Oversized - 280 GSM</b><span><i class="w"
+                    style="background:#fff;border-color:#fff"></i></span></div>
+              <h3>Acid Logic Archive Tee</h3>
+              <p>Blanco roto crudo sin tintes químicos ni procesos blanqueadores artificiales.</p>
+              <div class="buy">
+                <strong>$219.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="img">
+              <div class="ph" role="img" aria-label="Modelo con camiseta gris mineral"></div>
+              <span class="code mono">KULT // SS25-03</span>
+              <span class="bdg r mono">Últimas unidades</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b>Drop Shoulder - 320 GSM</b><span><i></i></span></div>
+              <h3>Cyber Dissolution Mineral Tee</h3>
+              <p>Lavado a la piedra individual con acabado vintage desgastado a mano.</p>
+              <div class="buy">
+                <strong>$249.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card">
+            <div class="img">
+              <div class="ph" role="img" aria-label="Modelo con camiseta verde ácido"></div>
+              <span class="code mono">KULT // SS25-04</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b>Boxy Fit - 280 GSM</b><span><i></i></span></div>
+              <h3>KULT Monolith Crest Tee</h3>
+              <p>Gráfica emblemática del estudio con relieve 3D en pecho y dorsal de alta densidad.</p>
+              <div class="buy">
+                <strong>$209.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card">
+            <div class="img">
+              <div class="ph" role="img" aria-label="Modelo con backprint técnico"></div>
+              <span class="code mono">KULT // SS25-05</span>
+              <span class="bdg mono">Edición limitada</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b>Ultra-Heavy - 350 GSM</b><span><i></i></span></div>
+              <h3>Manifesto Backprint 350G</h3>
+              <p>El gramaje más contundente de nuestra serie experimental con cuello 1.2" indestructible.</p>
+              <div class="buy">
+                <strong>$269.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card">
+            <div class="img">
+              <div class="ph" role="img" aria-label="Modelo con camiseta Binary Codex"></div>
+              <span class="code mono">KULT // SS25-06</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b>Oversized - 280 GSM</b><span><i></i><i></i></span></div>
+              <h3>Binary Codex Gravure Tee</h3>
+              <p>Patrón amplio con caída recta. Doble puntada de seguridad en dobladillos y hombro caído.</p>
+              <div class="buy">
+                <strong>$225.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Barra de Progreso y Paginación -->
+        <div class="more mono">
+          <span>Mostrando 6 de 24 productos disponibles • <b>25% completado</b></span>
+          <div class="bar"><i></i></div>
+          <button class="btn dark" type="button">Cargar más camisetas (18 restantes) ⌄</button>
+          <span style="font-size:.6rem">Sistema de despacho inmediato // Disponibilidad en tiempo real</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Especificaciones Técnicas -->
+  <div class="wrap">
+    <div class="specs">
+      <article class="spec">
+        <small class="mono">[Especificación 01]</small>
+        <h3>Algodón 100% orgánico</h3>
+        <p>Tejido tubular de punto grueso hilado en anillos con acabado pre-encogido para garantizar que las dimensiones
+          originales se mantengan idénticas.</p>
+      </article>
+
+      <article class="spec">
+        <small class="mono">[Especificación 02]</small>
+        <h3>Serigrafía puff &amp; plastisol</h3>
+        <p>Proceso manual de serigrafía en talleres de Bogotá y Medellín. Tintas ecológicas con relieve 3D
+          arquitectónico.</p>
+      </article>
+
+      <article class="spec">
+        <small class="mono">[Especificación 03]</small>
+        <h3>Corte oversized real</h3>
+        <p>Patrones no basados en agrandar tallas estándar. Silueta cuadrada boxy construida desde cero con hombros
+          desplazados y cuello cerrado no deformable.</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- Footer General -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <a class="brand" href="index.html">
+            <b style="font:800 1.2rem var(--display)">KULT</b>
+            <small>Studio</small>
+          </a>
+          <p>Operando en la intersección del brutalismo subcultural, manipulación de serigrafía de alta densidad y
+            cortes arquitectónicos pesados.</p>
+          <div class="chips mono">
+            <span>Certified 280GSM</span>
+            <span>100% Organic</span>
+          </div>
+        </div>
+
+        <div>
+          <h4>Catálogo</h4>
+          <ul>
+            <li><a href="coleccion.html">Todas las prendas</a></li>
+            <li><a href="index.html#piezas">Nuevos lanzamientos</a></li>
+            <li><a href="coleccion.html">Gráficos pesados</a></li>
+            <li><a href="index.html#categorias">Boxy &amp; Oversized</a></li>
+            <li><a href="coleccion.html">Colección Permanente</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Atención al Cliente</h4>
+          <ul>
+            <li><a href="contacto.html">Soporte y Contacto</a></li>
+            <li><a href="login.html">Rastreo de envíos</a></li>
+            <li><a href="coleccion.html">Guía de tallas</a></li>
+            <li><a href="contacto.html">Envíos nacionales</a></li>
+            <li><a href="registro.html">Membresía privada</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Red Oficial</h4>
+          <ul>
+            <li><a href="#">INSTAGRAM <span>[EXT]</span></a></li>
+            <li><a href="#">DISCORD ARCHIVE <span>[EXT]</span></a></li>
+            <li><a href="#">SPOTIFY TRANSMISSIONS <span>[EXT]</span></a></li>
+            <li><a href="contacto.html">Sede Bogotá // Medellín</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fbot mono">
+        <span class="l">© 2026 KULT STUDIO Inc. • Todos los derechos reservados • <b>Tienda oficial Colombia</b></span>
+        <span class="pay">
+          <span>🔒 Cifrado SSL 256-bit</span>
+          <span>Wompi // PSE // Tarjetas</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

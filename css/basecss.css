@@ -1,0 +1,112 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap');
+
+:root {
+  /* Paleta cromática */
+  --bg: #111214;
+  --panel: #1b1c1f;
+  --field: #26272b;
+  --deep: #0c0d0f;
+  --input: #0c0d0f;
+  --line: #33353b;
+  --line-alt: #3a3c42;
+  --text: #e8e8ea;
+  --muted: #8a8c93;
+  --lime: #c6f500;
+  --lime-ink: #0c0d10;
+  --ink: #0c0d10;
+  --red: #e5282b;
+
+  /* Tipografías */
+  --display: 'Syne', system-ui, sans-serif;
+  --mono: 'Space Mono', ui-monospace, monospace;
+  --body: 'Inter', system-ui, sans-serif;
+
+  /* Dimensionamiento y layout */
+  --gap: clamp(16px, 2.5vw, 32px);
+  --max: 1360px;
+}
+
+/* Reset universal */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}
+
+/* Utilidades globales */
+.mono {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .7rem;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: var(--gap);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4.4vw, 3.2rem);
+  font-weight: 700;
+}
+
+.ph {
+  background: radial-gradient(45% 60% at 50% 55%, #5d5f66, transparent 75%), linear-gradient(180deg, #2c2d31, #0b0b0d);
+  filter: grayscale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
