@@ -70,7 +70,7 @@
             <path d="M5 7h14l-1 14H6zM9 7a3 3 0 016 0" />
           </svg>
           <span class="mono" style="font-size:.65rem">Carrito</span>
-          <b>02</b>
+          <b id="counter">02</b>
         </a>
 
         <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
@@ -139,7 +139,7 @@
 
         <div class="grp">
           <h3>Dimensión // Talla <span style="text-decoration:underline">GUÍA</span></h3>
-          <div class="sizes" id="sizes">
+          <div class="tallas" id="tallas">
             <button type="button" aria-pressed="false">XS</button>
             <button type="button" aria-pressed="true">S</button>
             <button type="button" aria-pressed="true">M</button>
@@ -188,95 +188,95 @@
         </div>
 
         <div class="grid" id="grid">
-          <!-- Card 1 con imagen de catálogo -->
-          <article class="card">
-            <div class="img">
-              <img src="img/imgregistro.jpg" alt="Camiseta System Override Heavy Tee" loading="lazy">
-              <span class="code mono">KULT // SS25-01</span>
-              <span class="bdg mono">Nuevo drop</span>
+          <!-- Card 1: Camiseta Negra Estampada -->
+        <article class="card">
+          <div class="img">
+            <img src="img/colection/negra_estampada.png" alt="Camiseta KULT negra con estampado gráfico verde neón" loading="lazy">
+            <span class="code mono">KULT // SS25-01</span>
+            <span class="bdg mono" id="destacado">Nuevo drop</span>
+          </div>
+          <div class="body">
+            <div class="meta mono"><b>Boxy Fit - 300 GSM</b><span><i></i><i class="w"></i></span></div>
+            <h3>CAMISETA KULT NEGRA</h3>
+            <p>Serigrafía cuádruple tinta plastisol mate y diseño gráfico urbano en contraste.</p>
+            <div class="buy">
+              <strong>$45.000<br>COP</strong>
+              <a class="btn lime" href="#">Comprar <span>→</span></a>
             </div>
-            <div class="body">
-              <div class="meta mono"><b>Boxy Fit - 300 GSM</b><span><i></i><i class="w"></i></span></div>
-              <h3>System Override Heavy Tee</h3>
-              <p>Serigrafía cuádruple tinta plastisol mate y corte arquitectónico de caída recta.</p>
-              <div class="buy">
-                <strong>$229.000<br>COP</strong>
-                <a class="btn lime" href="#">Comprar <span>→</span></a>
-              </div>
-            </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- Card 2 -->
-          <article class="card">
-            <div class="img white">
-              <div class="ph" role="img" aria-label="Camiseta blanca Acid Logic"></div>
-              <span class="code mono">KULT // SS25-02</span>
-              <span class="bdg d mono">Top ventas</span>
+        <!-- Card 2: Camiseta Blanca Oversize Minimal -->
+        <article class="card">
+          <div class="img">
+            <img src="img/colection/blanca_oversize.jpg" alt="Camiseta blanca oversize lisa con logo KULT minimalista en el cuello" loading="lazy">
+            <span class="code mono">KULT // SS25-02</span>
+            <span class="bdg mono">Nuevo drop</span>
+          </div>
+          <div class="body">
+            <div class="meta mono"><b>Boxy Fit - 300 GSM</b><span><i></i><i class="w"></i></span></div>
+            <h3>CAMISETA BLANCA KULT</h3>
+            <p>Diseño minimalista oversize en algodón premium con branding sutil en el cuello.</p>
+            <div class="buy">
+              <strong>$40.000<br>COP</strong>
+              <a class="btn lime" href="#">Comprar <span>→</span></a>
             </div>
-            <div class="body">
-              <div class="meta mono"><b style="color:var(--text)">Oversized - 280 GSM</b><span><i class="w"
-                    style="background:#fff;border-color:#fff"></i></span></div>
-              <h3>Acid Logic Archive Tee</h3>
-              <p>Blanco roto crudo sin tintes químicos ni procesos blanqueadores artificiales.</p>
-              <div class="buy">
-                <strong>$219.000<br>COP</strong>
-                <a class="btn lime" href="#">Comprar <span>→</span></a>
-              </div>
-            </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- Card 3 -->
-          <article class="card">
-            <div class="img">
-              <div class="ph" role="img" aria-label="Modelo con camiseta gris mineral"></div>
-              <span class="code mono">KULT // SS25-03</span>
-              <span class="bdg r mono">Últimas unidades</span>
+        <!-- Card 3: Camiseta Handmaid's Tale / FREE(DOM) -->
+        <article class="card">
+          <div class="img">
+            <img src="img/colection/red_handsmade_tail.jpg" alt="Camiseta roja con serigrafía de The Handmaid's Tale y texto FREE(DOM)" loading="lazy">
+            <span class="code mono">KULT // SS25-03</span>
+            <span class="bdg r mono">Últimas unidades</span>
+          </div>
+          <div class="body">
+            <div class="meta mono"><b>Boxy Fit - 280 GSM</b><span><i></i></span></div>
+            <h3>CAMISETA FREE(DOM)</h3>
+            <p>Estampado en serigrafía de alta definición con diseño inspirado en The Handmaid's Tale y texto FREE(DOM).</p>
+            <div class="buy">
+              <strong>$70.000<br>COP</strong>
+              <a class="btn lime" href="#">Comprar <span>→</span></a>
             </div>
-            <div class="body">
-              <div class="meta mono"><b>Drop Shoulder - 320 GSM</b><span><i></i></span></div>
-              <h3>Cyber Dissolution Mineral Tee</h3>
-              <p>Lavado a la piedra individual con acabado vintage desgastado a mano.</p>
-              <div class="buy">
-                <strong>$249.000<br>COP</strong>
-                <a class="btn lime" href="#">Comprar <span>→</span></a>
-              </div>
-            </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- Card 4 -->
-          <article class="card">
-            <div class="img">
-              <div class="ph" role="img" aria-label="Modelo con camiseta verde ácido"></div>
-              <span class="code mono">KULT // SS25-04</span>
+        <!-- Card 4: Camiseta Gris Bender -->
+        <article class="card">
+          <div class="img">
+            <img src="img/colection/gris_bender.jpg" alt="Camiseta gris oversize con diseño Bender was here y mano de robot" loading="lazy">
+            <span class="code mono">KULT // SS25-04</span>
+            <span class="bdg r mono">Últimas unidades</span>
+          </div>
+          <div class="body">
+            <div class="meta mono"><b>Boxy Fit - 280 GSM</b><span><i></i></span></div>
+            <h3>CAMISETA BENDER WAS HERE</h3>
+            <p>Gráfica estilo graffiti con mano robótica y texto "Bender was here" en alta durabilidad.</p>
+            <div class="buy">
+              <strong>$65.000<br>COP</strong>
+              <a class="btn lime" href="#">Comprar <span>→</span></a>
             </div>
-            <div class="body">
-              <div class="meta mono"><b>Boxy Fit - 280 GSM</b><span><i></i></span></div>
-              <h3>KULT Monolith Crest Tee</h3>
-              <p>Gráfica emblemática del estudio con relieve 3D en pecho y dorsal de alta densidad.</p>
-              <div class="buy">
-                <strong>$209.000<br>COP</strong>
-                <a class="btn lime" href="#">Comprar <span>→</span></a>
-              </div>
-            </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- Card 5 -->
-          <article class="card">
-            <div class="img">
-              <div class="ph" role="img" aria-label="Modelo con backprint técnico"></div>
-              <span class="code mono">KULT // SS25-05</span>
-              <span class="bdg mono">Edición limitada</span>
+        <!-- Card 5: Camiseta Negra Manchas Verde Neón -->
+        <article class="card">
+          <div class="img">
+            <img src="img/colection/buso_negro_neon.jpg" alt="Camiseta negra super oversize con salpicaduras de pintura verde neón" loading="lazy">
+            <span class="code mono">KULT // SS25-05</span>
+            <span class="bdg mono">Edición limitada</span>
+          </div>
+          <div class="body">
+            <div class="meta mono"><b>Ultra-Heavy - 350 GSM</b><span><i></i></span></div>
+            <h3>CAMISETA OVERSIZE SPLATTER</h3>
+            <p>Efecto salpicadura de pintura verde neón sobre base negra de alta densidad y corte ultra-oversize.</p>
+            <div class="buy">
+              <strong>$80.000<br>COP</strong>
+              <a class="btn lime" href="#">Comprar <span>→</span></a>
             </div>
-            <div class="body">
-              <div class="meta mono"><b>Ultra-Heavy - 350 GSM</b><span><i></i></span></div>
-              <h3>Manifesto Backprint 350G</h3>
-              <p>El gramaje más contundente de nuestra serie experimental con cuello 1.2" indestructible.</p>
-              <div class="buy">
-                <strong>$269.000<br>COP</strong>
-                <a class="btn lime" href="#">Comprar <span>→</span></a>
-              </div>
-            </div>
-          </article>
+          </div>
+        </article>
 
           <!-- Card 6 -->
           <article class="card">
@@ -374,7 +374,7 @@
 
         <div>
           <h4>Red Oficial</h4>
-          <ul>
+          <ul id="listadesp">
             <li><a href="#">INSTAGRAM <span>[EXT]</span></a></li>
             <li><a href="#">DISCORD ARCHIVE <span>[EXT]</span></a></li>
             <li><a href="#">SPOTIFY TRANSMISSIONS <span>[EXT]</span></a></li>
@@ -392,7 +392,7 @@
       </div>
     </div>
   </footer>
-
+<script src="js/demo.js"></script>
 </body>
 
 </html>

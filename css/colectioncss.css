@@ -219,13 +219,13 @@ aside.filters {
   color: var(--lime);
 }
 
-.sizes {
+.tallas {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
 }
 
-.sizes button {
+.tallas button {
   min-height: 40px;
   background: var(--field);
   border: 0;
@@ -234,7 +234,7 @@ aside.filters {
   transition: background .15s, color .15s;
 }
 
-.sizes button[aria-pressed=true] {
+.tallas button[aria-pressed=true] {
   background: var(--lime);
   color: var(--ink);
 }
