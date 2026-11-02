@@ -1,5 +1,17 @@
 // ==========================================
-// 1. LÓGICA DE FILTROS ACTIVOS
+// 1. SELECTOR DE TALLAS (Lógica original directa)
+// ==========================================
+const tallas = document.querySelectorAll(".tallas button");
+
+tallas.forEach((b) => {
+    b.addEventListener("click", () => {
+        const estadoActual = b.getAttribute("aria-pressed") === "true";
+        b.setAttribute("aria-pressed", !estadoActual);
+    });
+});
+
+// ==========================================
+// 2. FILTROS ACTIVOS (Por tipo de corte)
 // ==========================================
 const tarjetas = document.querySelectorAll(".card");
 const botonesFiltro = document.querySelectorAll(".filtro-btn");
@@ -21,20 +33,19 @@ botonesFiltro.forEach((boton) => {
 });
 
 // ==========================================
-// 2. LÓGICA DEL CARRITO (Estado + Render)
+// 3. CARRITO DINÁMICO (Estado, Push y Render)
 // ==========================================
 
-// 1. ESTADO: Arreglo donde se guardarán los productos seleccionados[cite: 2]
+// 1. ESTADO: Arreglo del carrito[cite: 2]
 const carrito = [];
 
-// Seleccionamos elementos del DOM para el carrito
 const ulListaCarrito = document.querySelector("#lista-carrito");
 const contadorHeader = document.querySelector("#counter");
 const totalSpan = document.querySelector("#total-carrito");
 const cartBtn = document.querySelector("#cart-btn");
 const cartModal = document.querySelector("#cart-modal");
 
-// 3. RENDER: Dibuja de nuevo la lista completa en pantalla[cite: 2]
+// 3. RENDER: Dibuja de nuevo la lista completa en pantalla y actualiza totales[cite: 2]
 function render() {
   ulListaCarrito.innerHTML = "";
   let acumuladoTotal = 0;
@@ -42,13 +53,15 @@ function render() {
   if (carrito.length === 0) {
     ulListaCarrito.innerHTML = `<li style="color:#666;">El carrito está vacío.</li>`;
   } else {
-    // Recorremos el estado (arreglo carrito)
     carrito.forEach((item) => {
       const li = document.createElement("li");
-      li.style.cssText = "display:flex; justify-content:space-between; margin-bottom:6px; color:#fff;";
+      li.style.cssText = "display:flex; justify-content:space-between; margin-bottom:6px; color:#fff; align-items:center;";
       
       li.innerHTML = `
-        <span>${item.nombre}</span>
+        <div>
+          <span>${item.nombre}</span><br>
+          <small style="color:var(--lime,#ccff00);">Talla: ${item.talla}</small>
+        </div>
         <b style="color:var(--lime,#ccff00);">$${item.precio.toLocaleString()}</b>
       `;
       
@@ -57,17 +70,23 @@ function render() {
     });
   }
 
-  // Actualizamos el contador visual y el total monetario
   contadorHeader.textContent = carrito.length < 10 ? `0${carrito.length}` : carrito.length;
   totalSpan.textContent = `$${acumuladoTotal.toLocaleString()} COP`;
 }
 
-// 2. ACCIÓN: Capturamos los clics en los botones de compra[cite: 2]
+// 2. ACCIÓN: Capturamos clics en comprar y usamos push[cite: 2]
 const botonesComprar = document.querySelectorAll(".card .btn.lime");
 
 botonesComprar.forEach((boton) => {
   boton.addEventListener("click", (e) => {
-    e.preventDefault(); // Evita el comportamiento por defecto del enlace
+    e.preventDefault();
+
+    // Detectar qué talla está marcada (aria-pressed="true")
+    const tallasSeleccionadas = document.querySelectorAll(".tallas button[aria-pressed='true']");
+    let tallaElegida = "M"; // Valor por defecto si no hay ninguna seleccionada
+    if (tallasSeleccionadas.length > 0) {
+      tallaElegida = tallasSeleccionadas[0].textContent;
+    }
 
     const card = boton.closest(".card");
     const nombreProducto = card.querySelector("h3").textContent.trim();
@@ -77,18 +96,19 @@ botonesComprar.forEach((boton) => {
     // Agregamos al arreglo (Estado) mediante push[cite: 2]
     carrito.push({
       nombre: nombreProducto,
+      talla: tallaElegida,
       precio: precioNumerico
     });
 
-    // Actualizamos la interfaz llamando a render()[cite: 2]
+    // Llamamos a render() para actualizar la interfaz[cite: 2]
     render();
 
-    // Mostramos el modal flotante del carrito automáticamente al añadir
+    // Mostrar modal del carrito
     cartModal.style.display = "block";
   });
 });
 
-// Toggle manual para abrir/cerrar el modal del carrito desde el header
+// Toggle para abrir/cerrar el modal del carrito
 cartBtn.addEventListener("click", (e) => {
   e.preventDefault();
   cartModal.style.display = cartModal.style.display === "none" ? "block" : "none";
