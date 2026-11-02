@@ -34,9 +34,24 @@ const contador = document.querySelector("#counter");
 contador.textContent = "05";
 
 //TALLAS
-const tallaXS = document.querySelector(".tallas button");
-console.log(tallas, tallas.length);
-tallaXS.setAttribute("aria-pressed",true);
+//const tallas = document.querySelector(".tallas button");
+//console.log(tallas, tallas.length);
+//tallaXS.setAttribute("aria-pressed",true);
+
+// 1. Usamos querySelectorAll para obtener todos los botones en una lista
+const tallas = document.querySelectorAll(".tallas button");
+
+//
+tallas.forEach((b) => {
+    b.addEventListener("click", () => {
+        // Obtenemos el estado actual del aria-pressed true, false o null
+        const estaPresionado = b.getAttribute("aria-pressed") === "true";
+        
+        // Cambiamos al estado contrario 
+        b.setAttribute("aria-pressed", !estaPresionado);
+    });
+});
+
 
 //FILTROS
 //document.querySelector(#filters).classlist.toggle("open");
