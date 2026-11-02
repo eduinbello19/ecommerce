@@ -14,6 +14,26 @@
   <link rel="stylesheet" href="css/componentscss.css">
   <link rel="stylesheet" href="css/colectioncss.css">
 
+  <style>
+    /* Regla CSS para ocultar las tarjetas filtradas */
+    .card.oculto {
+      display: none !important;
+    }
+    
+    /* Estilo activo para destacar el filtro seleccionado */
+    .active.mono button.filtro-btn.active {
+      background-color: var(--lime, #ccff00);
+      color: #000;
+      border-color: var(--lime, #ccff00);
+      font-weight: bold;
+    }
+    .active.mono button.filtro-btn {
+      cursor: pointer;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -31,7 +51,7 @@
   <header class="site">
     <div class="wrap">
       <a class="brand" href="index.html">
-        <a class="brand" href="#"><img src="img/logokult.png" alt="Logo KULT Studio" height="35px">
+        <img src="img/logokult.png" alt="Logo KULT Studio" height="35px">
         <span><b>KULT</b><small>Studio // Lab</small></span>
       </a>
 
@@ -179,117 +199,101 @@
           <span id="fcount" style="color:var(--lime)">[04]</span>
         </button>
 
+        <!-- Pestaña de Filtros Activos con opción "Todo" y tipos de prenda -->
         <div class="active mono">
           <span>Filtros activos:</span>
-          <button type="button">Oversized Silhouette ×</button>
-          <button type="button">Boxy Fit ×</button>
-          <button type="button">280+ GSM ×</button>
-          <button type="button" class="l">Tallas: S, M, L ×</button>
+          <button type="button" class="filtro-btn active" data-filtro="todos">Todo</button>
+          <button type="button" class="filtro-btn" data-filtro="regular">Camiseta Regular</button>
+          <button type="button" class="filtro-btn" data-filtro="oversize">Camiseta Oversize</button>
+          <button type="button" class="filtro-btn" data-filtro="buso-oversize">Buso Oversize</button>
         </div>
 
         <div class="grid" id="grid">
-          <!-- Card 1: Camiseta Negra Estampada -->
-        <article class="card">
-          <div class="img">
-            <img src="img/colection/negra_estampada.png" alt="Camiseta KULT negra con estampado gráfico verde neón" loading="lazy">
-            <span class="code mono">KULT // SS25-01</span>
-            <span class="bdg mono" id="destacado">Nuevo drop</span>
-          </div>
-          <div class="body">
-            <div class="meta mono"><b>Boxy Fit - 300 GSM</b><span><i></i><i class="w"></i></span></div>
-            <h3>CAMISETA KULT NEGRA</h3>
-            <p>Serigrafía cuádruple tinta plastisol mate y diseño gráfico urbano en contraste.</p>
-            <div class="buy">
-              <strong>$45.000<br>COP</strong>
-              <a class="btn lime" href="#">Comprar <span>→</span></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 2: Camiseta Blanca Oversize Minimal -->
-        <article class="card">
-          <div class="img">
-            <img src="img/colection/blanca_oversize.jpg" alt="Camiseta blanca oversize lisa con logo KULT minimalista en el cuello" loading="lazy">
-            <span class="code mono">KULT // SS25-02</span>
-            <span class="bdg mono">Nuevo drop</span>
-          </div>
-          <div class="body">
-            <div class="meta mono"><b>Boxy Fit - 300 GSM</b><span><i></i><i class="w"></i></span></div>
-            <h3>CAMISETA BLANCA KULT</h3>
-            <p>Diseño minimalista oversize en algodón premium con branding sutil en el cuello.</p>
-            <div class="buy">
-              <strong>$40.000<br>COP</strong>
-              <a class="btn lime" href="#">Comprar <span>→</span></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3: Camiseta Handmaid's Tale / FREE(DOM) -->
-        <article class="card">
-          <div class="img">
-            <img src="img/colection/red_handsmade_tail.jpg" alt="Camiseta roja con serigrafía de The Handmaid's Tale y texto FREE(DOM)" loading="lazy">
-            <span class="code mono">KULT // SS25-03</span>
-            <span class="bdg r mono">Últimas unidades</span>
-          </div>
-          <div class="body">
-            <div class="meta mono"><b>Boxy Fit - 280 GSM</b><span><i></i></span></div>
-            <h3>CAMISETA FREE(DOM)</h3>
-            <p>Estampado en serigrafía de alta definición con diseño inspirado en The Handmaid's Tale y texto FREE(DOM).</p>
-            <div class="buy">
-              <strong>$70.000<br>COP</strong>
-              <a class="btn lime" href="#">Comprar <span>→</span></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 4: Camiseta Gris Bender -->
-        <article class="card">
-          <div class="img">
-            <img src="img/colection/gris_bender.jpg" alt="Camiseta gris oversize con diseño Bender was here y mano de robot" loading="lazy">
-            <span class="code mono">KULT // SS25-04</span>
-            <span class="bdg r mono">Últimas unidades</span>
-          </div>
-          <div class="body">
-            <div class="meta mono"><b>Boxy Fit - 280 GSM</b><span><i></i></span></div>
-            <h3>CAMISETA BENDER WAS HERE</h3>
-            <p>Gráfica estilo graffiti con mano robótica y texto "Bender was here" en alta durabilidad.</p>
-            <div class="buy">
-              <strong>$65.000<br>COP</strong>
-              <a class="btn lime" href="#">Comprar <span>→</span></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 5: Camiseta Negra Manchas Verde Neón -->
-        <article class="card">
-          <div class="img">
-            <img src="img/colection/buso_negro_neon.jpg" alt="Camiseta negra super oversize con salpicaduras de pintura verde neón" loading="lazy">
-            <span class="code mono">KULT // SS25-05</span>
-            <span class="bdg mono">Edición limitada</span>
-          </div>
-          <div class="body">
-            <div class="meta mono"><b>Ultra-Heavy - 350 GSM</b><span><i></i></span></div>
-            <h3>CAMISETA OVERSIZE SPLATTER</h3>
-            <p>Efecto salpicadura de pintura verde neón sobre base negra de alta densidad y corte ultra-oversize.</p>
-            <div class="buy">
-              <strong>$80.000<br>COP</strong>
-              <a class="btn lime" href="#">Comprar <span>→</span></a>
-            </div>
-          </div>
-        </article>
-
-          <!-- Card 6 -->
-          <article class="card">
+          <!-- Card 1: Camiseta Regular -->
+          <article class="card" data-corte="regular">
             <div class="img">
-              <div class="ph" role="img" aria-label="Modelo con camiseta Binary Codex"></div>
-              <span class="code mono">KULT // SS25-06</span>
+              <img src="img/colection/negra_estampada.png" alt="Camiseta KULT negra con estampado gráfico verde neón" loading="lazy">
+              <span class="code mono">KULT // SS25-01</span>
+              <span class="bdg mono" id="destacado">Nuevo drop</span>
             </div>
             <div class="body">
-              <div class="meta mono"><b>Oversized - 280 GSM</b><span><i></i><i></i></span></div>
-              <h3>Binary Codex Gravure Tee</h3>
-              <p>Patrón amplio con caída recta. Doble puntada de seguridad en dobladillos y hombro caído.</p>
+              <div class="meta mono"><b>Regular Fit - 280 GSM</b><span><i></i><i class="w"></i></span></div>
+              <h3>Card 1 (Camiseta Regular)</h3>
+              <p>Corte clásico estructurado en algodón premium con serigrafía cuádruple tinta plastisol verde neón.</p>
               <div class="buy">
-                <strong>$225.000<br>COP</strong>
+                <strong>$45.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Camiseta Oversize -->
+          <article class="card" data-corte="oversize">
+            <div class="img">
+              <img src="img/colection/blanca_oversize.jpg" alt="Camiseta blanca oversize lisa con logo KULT minimalista en el cuello" loading="lazy">
+              <span class="code mono">KULT // SS25-02</span>
+              <span class="bdg mono">Nuevo drop</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b>Oversize Fit - 300 GSM</b><span><i></i><i class="w"></i></span></div>
+              <h3>Card 2 (Camiseta Oversize)</h3>
+              <p>Silueta amplia caída con hombros desplazados en algodón orgánico blanco y branding sutil en el cuello.</p>
+              <div class="buy">
+                <strong>$40.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Camiseta Regular -->
+          <article class="card" data-corte="regular">
+            <div class="img">
+              <img src="img/colection/red_handsmade_tail.jpg" alt="Camiseta roja con serigrafía de The Handmaid's Tale y texto FREE(DOM)" loading="lazy">
+              <span class="code mono">KULT // SS25-03</span>
+              <span class="bdg r mono">Últimas unidades</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b>Regular Fit - 280 GSM</b><span><i></i></span></div>
+              <h3>Card 3 (Camiseta Regular)</h3>
+              <p>Patrón recto tradicional en tono rojo profundo con serigrafía conceptual inspirada en FREE(DOM).</p>
+              <div class="buy">
+                <strong>$70.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Camiseta Oversize -->
+          <article class="card" data-corte="oversize">
+            <div class="img">
+              <img src="img/colection/gris_bender.jpg" alt="Camiseta gris oversize con diseño Bender was here y mano de robot" loading="lazy">
+              <span class="code mono">KULT // SS25-04</span>
+              <span class="bdg r mono">Últimas unidades</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b>Oversize Fit - 300 GSM</b><span><i></i></span></div>
+              <h3>Card 4 (Camiseta Oversize)</h3>
+              <p>Silueta boxy holgada en pigmento gris mineral con gráfica urbana "Bender Was Here" en alta densidad.</p>
+              <div class="buy">
+                <strong>$65.000<br>COP</strong>
+                <a class="btn lime" href="#">Comprar <span>→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Buso Oversize -->
+          <article class="card" data-corte="buso-oversize">
+            <div class="img">
+              <img src="img/colection/buso_negro_neon.jpg" alt="Buso negro super oversize con salpicaduras de pintura verde neón" loading="lazy">
+              <span class="code mono">KULT // SS25-05</span>
+              <span class="bdg mono">Edición limitada</span>
+            </div>
+            <div class="body">
+              <div class="meta mono"><b>Ultra-Heavy - 350 GSM</b><span><i></i></span></div>
+              <h3>Card 5 (Buso Oversize)</h3>
+              <p>Buso heavyweight de máxima densidad con salpicaduras de pintura verde neón y corte hiper-amplio.</p>
+              <div class="buy">
+                <strong>$80.000<br>COP</strong>
                 <a class="btn lime" href="#">Comprar <span>→</span></a>
               </div>
             </div>
@@ -298,9 +302,9 @@
 
         <!-- Barra de Progreso y Paginación -->
         <div class="more mono">
-          <span>Mostrando 6 de 24 productos disponibles • <b>25% completado</b></span>
+          <span>Mostrando 5 productos filtrables • <b>100% completado</b></span>
           <div class="bar"><i></i></div>
-          <button class="btn dark" type="button">Cargar más camisetas (18 restantes) ⌄</button>
+          <button class="btn dark" type="button">Cargar más camisetas ⌄</button>
           <span style="font-size:.6rem">Sistema de despacho inmediato // Disponibilidad en tiempo real</span>
         </div>
       </div>
@@ -392,7 +396,9 @@
       </div>
     </div>
   </footer>
-<script src="js/demo.js"></script>
+
+  <!-- Script con la lógica de filtrado -->
+  <script src="js/filtrosactivos.js"></script>
 </body>
 
 </html>
