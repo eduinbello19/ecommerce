@@ -84,14 +84,31 @@
           <i>0</i>
         </button>
 
-        <a class="cart" href="#" aria-label="Carrito de compras">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            aria-hidden="true">
-            <path d="M5 7h14l-1 14H6zM9 7a3 3 0 016 0" />
-          </svg>
-          <span class="mono" style="font-size:.65rem">Carrito</span>
-          <b id="counter">02</b>
-        </a>
+        <!-- Enlace y Menú Desplegable del Carrito -->
+        <div class="cart-container" style="position: relative;">
+          <a class="cart" href="#" id="cart-btn" aria-label="Carrito de compras">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path d="M5 7h14l-1 14H6zM9 7a3 3 0 016 0" />
+            </svg>
+            <span class="mono" style="font-size:.65rem">Carrito</span>
+            <b id="counter">00</b>
+          </a>
+
+          <!-- Resumen flotante del Carrito -->
+          <div id="cart-modal" class="mono" style="display:none; position:absolute; right:0; top:40px; background:#111; border:1px solid #333; padding:15px; width:280px; z-index:100; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+            <h4 style="margin:0 0 10px 0; border-bottom:1px solid #333; padding-bottom:5px; font-size:0.85rem; color:var(--lime,#ccff00);">■ RESUMEN DE COMPRA</h4>
+            
+            <ul id="lista-carrito" style="list-style:none; padding:0; margin:0 0 10px 0; max-height:200px; overflow-y:auto; font-size:0.75rem;">
+              <li style="color:#666;">El carrito está vacío.</li>
+            </ul>
+
+            <div style="border-top:1px solid #333; padding-top:8px; display:flex; justify-content:space-between; font-size:0.8rem; font-weight:bold; color:#fff;">
+              <span>TOTAL:</span>
+              <span id="total-carrito">$0 COP</span>
+            </div>
+          </div>
+        </div>
 
         <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -397,8 +414,8 @@
     </div>
   </footer>
 
-  <!-- Script con la lógica de filtrado -->
-  <script src="js/filtrosactivos.js"></script>
+  <!-- Archivo JavaScript único que agrupa filtros y carrito -->
+  <script src="js/filtroycarrito.js"></script>
 </body>
 
 </html>
