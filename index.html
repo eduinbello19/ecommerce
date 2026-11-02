@@ -1,13 +1,422 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Camisas</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KULT STUDIO · Drop 04 Hyperstructure · Tienda Oficial</title>
+  <meta name="description"
+    content="Lanzamiento Drop 04 de KULT STUDIO. Heavyweight French Terry & Algodón Orgánico 280 GSM con silueta oversized en Bogotá y Medellín.">
+
+  <!-- Estilos modulares -->
+  <link rel="stylesheet" href="css/basecss.css">
+  <link rel="stylesheet" href="css/layoutcss.css">
+  <link rel="stylesheet" href="css/componentscss.css">
+  <link rel="stylesheet" href="css/homecss.css">
+
 </head>
+
 <body>
-    <h1>prueba de camisas con js</h1>
-    <script src="js/app.js"></script>
+
+  <!-- Barra superior informativa -->
+  <div class="ticker mono">
+    <div class="wrap">
+      <span><b>■</b> System // Online</span>
+      <span class="mid">Drop 04 / Lanzamiento exclusivo • Envíos a todo el país • Unidades limitadas</span>
+      <span class="loc">Loc: BOG / MDE // Colombia &nbsp; <b>V.4.02</b></span>
+    </div>
+  </div>
+
+  <!-- Cabecera y Navegación Principal -->
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="img/logokult.png" alt="Logo KULT Studio" style="height: 35px;">
+        <span><b>KULT</b><small>Studio//Lab</small></span>
+      </a>
+
+      <nav class="main" id="nav" aria-label="Navegación principal">
+        <a href="coleccion.html">Colección</a>
+        <a href="#piezas">Novedades</a>
+        <a href="coleccion.html">Gráficas</a>
+        <a href="#categorias">Oversized</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="login.html">Acceso Clientes</a>
+      </nav>
+
+      <div class="tools">
+        <label class="search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4-4" />
+          </svg>
+          <input type="search" placeholder="Buscar en la tienda..." aria-label="Buscar">
+          <kbd>⌘K</kbd>
+        </label>
+
+        <div class="cur"><span class="on">COP</span><span>USD</span></div>
+
+        <button class="icon-btn" aria-label="Favoritos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 21s-8-5-8-11a5 5 0 019-3 5 5 0 019 3c0 6-8 11-8 11z" />
+          </svg>
+          <i>0</i>
+        </button>
+
+        <a class="cart" href="coleccion.html" aria-label="Ver carrito">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M5 7h14l-1 14H6zM9 7a3 3 0 016 0" />
+          </svg>
+          <span class="mono" style="font-size:.65rem">Cart</span>
+          <b>02</b>
+        </a>
+
+        <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Principal -->
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="tag mono">Edición limitada // 150 unidades</span>
+          <p class="proto mono">[ Protocolo de lanzamiento ] • <b>Temporada 2024</b></p>
+          <h1>Drop 04 <em>Hyper-</em>structure</h1>
+          <p class="lead">280 GSM Heavyweight French Terry &amp; Algodón Orgánico 100%. Patronaje arquitectónico de
+            silueta oversized desarrollado en nuestros talleres experimentales.</p>
+
+          <div class="count" role="timer" aria-label="Cierre de acceso privado">
+            <div class="top mono"><span>Cierre de acceso privado</span><b>Status: Activo</b></div>
+            <div class="cells">
+              <div class="cell"><strong id="h">13</strong><span>HORAS</span></div>
+              <div class="cell"><strong id="m">40</strong><span>MIN</span></div>
+              <div class="cell"><strong id="s">51</strong><span>SEG</span></div>
+              <div class="cell"><strong>04</strong><span>LOTE</span></div>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn lime" href="coleccion.html">Comprar ahora
+              <svg width="14" height="10" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 6h13M9 1l5 5-5 5" />
+              </svg>
+            </a>
+            <a class="btn dark" href="#categorias">Ver siluetas</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="ph" role="img" aria-label="Modelo con camiseta oversized negra"></div>
+          <span class="spec mono">Spec: 280 GSM //<br>Architectural fit</span>
+          <div class="cap">
+            <span class="mono">[Peso pesado certificado]</span>
+            Estructura rígida de caída recta que mantiene su silueta intacta tras lavado.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee Banner -->
+    <div class="marquee" aria-hidden="true">
+      <div>
+        <span>Drop 04 online // Silueta reforzada 280GSM</span>
+        <span>Algodón orgánico sin pesticidas</span>
+        <span>Serigrafía textil alta densidad</span>
+        <span>Patronaje boxy unisex</span>
+        <span>Drop 04 online // Silueta reforzada 280GSM</span>
+        <span>Algodón orgánico sin pesticidas</span>
+        <span>Serigrafía textil alta densidad</span>
+        <span>Patronaje boxy unisex</span>
+      </div>
+    </div>
+
+    <!-- Catálogo Destacado -->
+    <section id="piezas">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <p class="eyebrow mono" style="color:var(--muted)">[ Nuevos lanzamientos ]</p>
+            <h2>Piezas del Drop 04</h2>
+          </div>
+          <p class="meta mono"><b>4 artifacts en stock</b>Camisetas con horma oversized</p>
+        </div>
+
+        <div class="grid4">
+          <article class="prod">
+            <div class="img">
+              <div class="badges mono"><span class="hot">Popular</span><span>280 GSM</span></div>
+              <img src="img/img1.webp" alt="Camiseta Neo-Tokyo Acid Wash" loading="lazy">
+            </div>
+            <div class="info">
+              <div class="sku mono"><span>SKU: KLT-04-ACD</span><b>Boxy fit</b></div>
+              <h3>Neo-Tokyo Acid Wash Tee</h3>
+              <div class="pr"><strong>$249.000 COP</strong><span>S M L XL</span></div>
+            </div>
+          </article>
+
+          <article class="prod">
+            <div class="img">
+              <div class="badges mono"><span class="ltd">Limitado (32 restantes)</span><span>280 GSM</span></div>
+              <div class="ph" role="img" aria-label="Cybernetic Dissonance Tee"></div>
+            </div>
+            <div class="info">
+              <div class="sku mono"><span>SKU: KLT-04-CYB</span><b>Oversized</b></div>
+              <h3>Cybernetic Dissonance Tee</h3>
+              <div class="pr"><strong>$279.000 COP</strong><span>M L XL</span></div>
+            </div>
+          </article>
+
+          <article class="prod">
+            <div class="img">
+              <div class="badges mono"><span>Heavy slab</span><span>280 GSM</span></div>
+              <div class="ph" role="img" aria-label="System Crash Oversized Tee"></div>
+            </div>
+            <div class="info">
+              <div class="sku mono"><span>SKU: KLT-04-CRS</span><b>Oversized</b></div>
+              <h3>System Crash Oversized Tee</h3>
+              <div class="pr"><strong>$239.000 COP</strong><span>S M L XL</span></div>
+            </div>
+          </article>
+
+          <article class="prod">
+            <div class="img">
+              <div class="badges mono"><span>Horma over</span><span>280 GSM</span></div>
+              <div class="ph" role="img" aria-label="Raw Archive Boxy Tee"></div>
+            </div>
+            <div class="info">
+              <div class="sku mono"><span>SKU: KLT-04-RAW</span><b>Boxy fit</b></div>
+              <h3>Raw Archive Boxy Tee</h3>
+              <div class="pr"><strong>$219.000 COP</strong><span>S M L XXL</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ingeniería de Materiales (Craft) -->
+    <section class="craft">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <p class="eyebrow mono" style="color:var(--muted)">[ Estándar industrial y confección ]</p>
+            <h2>Heavyweight fabric /<br>sustainable craft</h2>
+          </div>
+          <p>Prendas con calidad y confección nacional. Desarrollamos camisetas de alto gramaje diseñadas como piezas
+            duraderas y de alta resistencia.</p>
+        </div>
+
+        <div class="feats">
+          <article class="feat">
+            <div class="ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M5 19c0-9 5-14 14-14 0 9-5 14-14 14zM5 19l8-8" />
+              </svg>
+            </div>
+            <small class="mono">01 // Materia prima pura</small>
+            <h3>100% algodón orgánico</h3>
+            <p>Hilatura peinada de 280 GSM libre de pesticidas químicos. Densidad excepcional que ofrece cuerpo rígido,
+              caída escultural y cero transparencia.</p>
+            <div class="ft mono"><span>Certificado GOTS</span><span>✓</span></div>
+          </article>
+
+          <article class="feat">
+            <div class="ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M2 6h12v10H2zM14 9h5l3 3v4h-8" />
+                <circle cx="7" cy="18" r="2" />
+                <circle cx="17" cy="18" r="2" />
+              </svg>
+            </div>
+            <small class="mono">02 // Logística &amp; despacho</small>
+            <h3>Envíos a todo el país</h3>
+            <p>Hub centralizado en Bogotá y Medellín con despachos express 24-48h a nivel nacional, empaque
+              anti-manipulación sellado al vacío y rastreo en tiempo real.</p>
+            <div class="ft mono"><span>Cobertura nacional total</span><span>✓</span></div>
+          </article>
+
+          <article class="feat">
+            <div class="ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="8" width="18" height="8" />
+                <path d="M7 8v3M11 8v3M15 8v3" />
+              </svg>
+            </div>
+            <small class="mono">03 // Ingeniería textil</small>
+            <h3>Cuello canalé reforzado 1.2"</h3>
+            <p>Canalé grueso 1x1 con elastano técnico preencogido y doble costura ciega que impide la deformación del
+              cuello tras lavados intensivos.</p>
+            <div class="ft mono"><span>Zero stretch out</span><span>⤢</span></div>
+          </article>
+        </div>
+
+        <div class="dens">
+          <div class="tx">
+            <b>ÍNDICE DE DENSIDAD TEXTIL KULT</b>
+            Comparativa frente al estándar convencional de mercado (140-160 GSM)
+          </div>
+          <div class="bar" role="img" aria-label="280 GSM, 85% más denso"><span></span></div>
+          <span class="v mono">280 GSM [+85%]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carrusel de Categorías -->
+    <section id="categorias">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <p class="eyebrow mono" style="color:var(--muted)">[ Explorar por clasificación ]</p>
+            <h2>Categorías de silueta</h2>
+          </div>
+          <div class="arrows">
+            <button id="prev" aria-label="Categoría anterior">‹</button>
+            <button id="next" aria-label="Categoría siguiente">›</button>
+          </div>
+        </div>
+
+        <div class="cats" id="cats">
+          <a class="cat" href="coleccion.html">
+            <div class="ph"></div>
+            <div class="top mono"><span>Cat 01</span><span>↗</span></div>
+            <small class="mono">Patrón drop shoulder</small>
+            <h3>Oversized silhouette</h3>
+            <span class="n mono">18 modelos →</span>
+          </a>
+
+          <a class="cat" href="coleccion.html">
+            <div class="ph"></div>
+            <div class="top mono"><span>Cat 02</span><span>↗</span></div>
+            <small class="mono">Serigrafías craqueladas</small>
+            <h3>Vintage graphic tees</h3>
+            <span class="n mono">24 modelos →</span>
+          </a>
+
+          <a class="cat" href="coleccion.html">
+            <div class="ph"></div>
+            <div class="top mono"><span>Cat 03</span><span>↗</span></div>
+            <small class="mono">Arquitectura pura</small>
+            <h3>Minimal essentials</h3>
+            <span class="n mono">12 modelos →</span>
+          </a>
+
+          <a class="cat" href="coleccion.html">
+            <div class="ph"></div>
+            <div class="top mono"><span class="colab">Colab</span><span>↗</span></div>
+            <small class="mono">Tiradas numeradas</small>
+            <h3>Collab editions</h3>
+            <span class="n mono">6 modelos →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Street Style Community -->
+    <section class="street" style="padding-top:0">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <p class="eyebrow mono" style="color:var(--muted)">[ Comunidad &amp; calle ]</p>
+            <h2>#KULTSTUDIO street style</h2>
+          </div>
+          <div class="r">
+            <p>Etiqueta tu look en Instagram para entrar al archivo permanente.</p>
+            <a class="btn dark" href="coleccion.html">Ver colección completa</a>
+          </div>
+        </div>
+
+        <div class="shots">
+          <div class="ph" role="img" aria-label="Look callejero 1"></div>
+          <div class="ph" role="img" aria-label="Look callejero 2"></div>
+          <div class="ph" role="img" aria-label="Look callejero 3"></div>
+          <div class="ph" role="img" aria-label="Look callejero 4"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de Suscripción -->
+    <section class="sub" style="padding-block:clamp(32px,5vw,56px)">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow mono" style="color:var(--muted);margin-bottom:8px">[Early access // Protocol]</p>
+          <h2>Suscríbete al próximo drop</h2>
+          <p>Recibe acceso prioritario 15 minutos antes de cada lanzamiento oficial. Sin correos innecesarios.</p>
+        </div>
+        <form action="#" method="post">
+          <input type="email" placeholder="Ingresa tu correo" aria-label="Correo electrónico" required>
+          <button class="btn lime" type="submit">Obtener acceso</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer General -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <a class="brand" href="index.html">
+            <b style="font:800 1.2rem var(--display)">KULT</b>
+            <small>Studio</small>
+          </a>
+          <p>Operando en la intersección del brutalismo subcultural, manipulación de serigrafía de alta densidad y
+            cortes arquitectónicos pesados.</p>
+          <div class="chips mono">
+            <span>Certified 280GSM</span>
+            <span>100% Organic</span>
+          </div>
+        </div>
+
+        <div>
+          <h4>Catálogo</h4>
+          <ul>
+            <li><a href="coleccion.html">Todas las prendas</a></li>
+            <li><a href="#piezas">Nuevos lanzamientos</a></li>
+            <li><a href="coleccion.html">Gráficos pesados</a></li>
+            <li><a href="#categorias">Boxy &amp; Oversized</a></li>
+            <li><a href="coleccion.html">Colección Completa</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Atención al Cliente</h4>
+          <ul>
+            <li><a href="contacto.html">Soporte y Contacto</a></li>
+            <li><a href="login.html">Rastreo de envíos</a></li>
+            <li><a href="coleccion.html">Guía de tallas</a></li>
+            <li><a href="contacto.html">Envíos nacionales</a></li>
+            <li><a href="registro.html">Membresía privada</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Red Oficial</h4>
+          <ul>
+            <li><a href="#">INSTAGRAM <span>[EXT]</span></a></li>
+            <li><a href="#">DISCORD ARCHIVE <span>[EXT]</span></a></li>
+            <li><a href="#">SPOTIFY TRANSMISSIONS <span>[EXT]</span></a></li>
+            <li><a href="contacto.html">Sede Bogotá // Medellín</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fbot mono">
+        <span class="l">© 2026 KULT STUDIO Inc. • Todos los derechos reservados • <b>Tienda oficial Colombia</b></span>
+        <span class="pay">
+          <span>🔒 Cifrado SSL 256-bit</span>
+          <span>Wompi // PSE // Tarjetas</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
 </body>
+
 </html>
