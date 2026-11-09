@@ -9,7 +9,7 @@ const camisetas = [
             { id: 102, talla: "M", color: "Negro", stock: 15 },
             { id: 103, talla: "L", color: "Negro", stock: 10 },
             { id: 104, talla: "XL", color: "Negro", stock: 0 }
-        ]
+        ] 
     },
     {
         id: 2,
@@ -69,7 +69,7 @@ function filtrarCamisetas(talla, color) {
     );
 
 }
-//filtro especifico e interactivo
+//filtro especifico e interactivo ;
 
 const talla = "S";
 const color = "Blanco";
