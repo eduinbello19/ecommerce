@@ -15,6 +15,9 @@ public class CategoriaModel {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "descripcion")
+    private String descripcion;
+    
     // Constructor vacío
     public CategoriaModel() {
     }
@@ -36,4 +39,14 @@ public class CategoriaModel {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+     // Getter y Setter de descripcion
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
 }

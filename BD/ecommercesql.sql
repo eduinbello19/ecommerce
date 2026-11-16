@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS `ecommerce`.`categorias` ;
 CREATE TABLE IF NOT EXISTS `ecommerce`.`categorias` (
   `id_categoria` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
+  `descripcion` VARCHAR(70) NULL,
   PRIMARY KEY (`id_categoria`),
   UNIQUE INDEX `id_categoria_UNIQUE` (`id_categoria` ASC) VISIBLE)
 ENGINE = InnoDB
