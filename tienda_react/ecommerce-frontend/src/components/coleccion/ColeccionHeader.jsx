@@ -31,6 +31,7 @@ export default function ColeccionHeader({ search, onSearchChange, cart, cartOpen
             <Link to="/coleccion">Oversized</Link>
             <Link to="/login">Acceso Clientes</Link>
             <Link to="/registro">Registro</Link>
+            <Link to="/new_product">Nuevo producto</Link>
           </nav>
 
           <div className="tools">

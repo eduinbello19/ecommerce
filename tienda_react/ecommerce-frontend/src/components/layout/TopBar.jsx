@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logokult.png'
 
-export default function TopBar() {
+export default function TopBar({ backTo = '/', backLabel = '[VOLVER A LA TIENDA]' }) {
   return (
     <header className="topbar">
       <Link className="brand" to="/registro">
@@ -13,7 +13,7 @@ export default function TopBar() {
       </Link>
       <div className="topbar-right">
         <span className="currency">CUR: COP ($)</span>
-        <Link className="back-link" to="/">[VOLVER A LA TIENDA]</Link>
+        <Link className="back-link" to={backTo}>{backLabel}</Link>
       </div>
     </header>
   )
