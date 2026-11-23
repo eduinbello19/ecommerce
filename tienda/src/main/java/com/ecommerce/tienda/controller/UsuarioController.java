@@ -1,6 +1,7 @@
 
 package com.ecommerce.tienda.controller;
 
+import com.ecommerce.tienda.dto.LoginRequest;
 import com.ecommerce.tienda.model.UsuarioModel;
 import com.ecommerce.tienda.service.UsuarioService;
 import java.util.List;
@@ -34,6 +35,11 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.CREATED)
     public UsuarioModel registrar(@RequestBody UsuarioModel usuario) {
         return usuarioService.registrarUsuario(usuario);
+    }
+
+    @PostMapping("/login")
+    public void login(@RequestBody LoginRequest login) {
+        usuarioService.autenticar(login);
     }
 
     // MODIFICAR O ACTUALIZAR USUARIO

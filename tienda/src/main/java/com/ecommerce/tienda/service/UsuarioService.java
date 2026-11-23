@@ -1,6 +1,7 @@
 
 package com.ecommerce.tienda.service;
 
+import com.ecommerce.tienda.dto.LoginRequest;
 import com.ecommerce.tienda.model.UsuarioModel;
 import com.ecommerce.tienda.repository.UsuarioRepository;
 import java.util.List;
@@ -10,6 +11,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class UsuarioService {
+
+    private static final String MENSAJE_LOGIN = "Correo invalido o clave erronea vuelvalo a intentar";
 
     private final UsuarioRepository usuarioRepository;
 
@@ -58,6 +61,20 @@ public class UsuarioService {
         actualExistente.setTallaHabitual(usuario.getTallaHabitual());
 
         return usuarioRepository.save(actualExistente);
+    }
+
+    public void autenticar(LoginRequest login) {
+        if (login == null || login.correo() == null || login.correo().isBlank()
+                || login.claveHash() == null || login.claveHash().isBlank()) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, MENSAJE_LOGIN);
+        }
+
+        UsuarioModel usuario = usuarioRepository.findByCorreo(login.correo().trim())
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, MENSAJE_LOGIN));
+
+        if (!usuario.getClaveHash().equals(login.claveHash().trim())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, MENSAJE_LOGIN);
+        }
     }
 
     // VALIDAR USUARIO
