@@ -34,7 +34,13 @@ public class VarianteService {
     // REGISTRAR VARIANTE
     public VarianteModel registrarVariante(VarianteModel variante) {
         validarVariante(variante);
+        variante.setIdVariante(siguienteId());
         return varianteRepository.save(variante);
+    }
+
+    private Integer siguienteId() {
+        VarianteModel ultima = varianteRepository.findTopByOrderByIdVarianteDesc();
+        return ultima == null || ultima.getIdVariante() == null ? 1 : ultima.getIdVariante() + 1;
     }
 
     // ELIMINAR VARIANTE

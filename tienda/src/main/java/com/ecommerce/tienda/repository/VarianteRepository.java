@@ -6,5 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VarianteRepository extends JpaRepository<VarianteModel, Integer> {
 
+    VarianteModel findTopByOrderByIdVarianteDesc();
+
 }
 

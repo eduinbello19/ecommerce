@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 public class VarianteModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_variante")
     private Integer idVariante;
 
