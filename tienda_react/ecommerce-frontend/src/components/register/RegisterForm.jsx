@@ -4,7 +4,7 @@ import PasswordStrength from './PasswordStrength'
 import SizeSelector from './SizeSelector'
 import SocialButtons from './SocialButtons'
 import { crearUsuario, describeRegistrationError } from '../../services/usuarioService'
-import { hashPassword, isValidPassword } from '../../utils/password'
+import { isValidPassword } from '../../utils/password'
 
 const INITIAL_FORM = {
   nombres: '',
@@ -33,7 +33,9 @@ function validate(form) {
     errors.documento = 'Ingresa un documento de 6 a 20 dígitos.'
   }
   if (!/^\d{10}$/.test(celular)) errors.movil = 'Ingresa un celular de 10 dígitos.'
-  if (!isValidPassword(form.clave)) {
+  if (form.clave.length > 25) {
+    errors.clave = 'Máximo 25 caracteres.'
+  } else if (!isValidPassword(form.clave)) {
     errors.clave = 'Mínimo 8 caracteres con letras, números y un carácter especial.'
   }
   if (form.clave !== form.clave2) errors.clave2 = 'Las contraseñas no coinciden.'
@@ -68,13 +70,12 @@ export default function RegisterForm() {
     setServerMessage('')
 
     try {
-      const claveHash = await hashPassword(form.clave)
       await crearUsuario({
         nombre: form.nombres.trim(),
         apellido: form.apellidos.trim(),
         correo: form.correo.trim(),
         documento: form.documento.trim(),
-        claveHash,
+        claveHash: form.clave,
         celular: form.movil.replace(/\D/g, ''),
         tallaHabitual: form.talla,
       })

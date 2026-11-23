@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { validarCredenciales } from '../../services/authService'
-import { hashPassword } from '../../utils/password'
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -28,8 +27,7 @@ export default function LoginForm({ onMessage }) {
     onMessage('', false)
 
     try {
-      const claveHash = await hashPassword(clave)
-      await validarCredenciales({ correo: correo.trim(), claveHash })
+      await validarCredenciales({ correo: correo.trim(), claveHash: clave })
       onMessage('bienvenid@ a su cuenta', false)
     } catch (error) {
       onMessage(error.message, true)
