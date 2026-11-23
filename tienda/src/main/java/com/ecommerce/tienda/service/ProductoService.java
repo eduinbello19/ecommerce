@@ -54,6 +54,7 @@ public class ProductoService {
         actualExistente.setPrecio(producto.getPrecio());
         actualExistente.setGramajeGsm(producto.getGramajeGsm());
         actualExistente.setIdCategoria(producto.getIdCategoria());
+        actualExistente.setRutaImagen(producto.getRutaImagen());
 
         return productoRepository.save(actualExistente);
     }

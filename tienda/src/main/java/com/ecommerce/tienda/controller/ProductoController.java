@@ -52,4 +52,3 @@ public class ProductoController {
         productoService.borrarProducto(id);
     }
 }
-

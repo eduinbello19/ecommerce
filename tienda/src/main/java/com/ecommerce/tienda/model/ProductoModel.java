@@ -25,6 +25,10 @@ public class ProductoModel {
     @Column(name = "id_categoria")
     private Integer idCategoria;
 
+    // NUEVA RUTA DE IMAGEN
+    @Column(name = "ruta_imagen", length = 200)
+    private String rutaImagen;
+
     // Constructor vacío
     public ProductoModel() {
     }
@@ -73,5 +77,13 @@ public class ProductoModel {
     public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
     }
-}
 
+    // Getter y Setter de la ruta de imagen
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+}
