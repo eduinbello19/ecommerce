@@ -311,6 +311,35 @@
   color: #fff;
 }
 
+.coleccion-page .cart-checkout {
+  width: 100%;
+  min-height: 36px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--lime);
+  color: var(--ink);
+  border: 0;
+  font: 700 .62rem var(--mono-font);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.coleccion-page .cart-checkout:hover {
+  filter: brightness(1.08);
+}
+
+.coleccion-page .cart-checkout:disabled {
+  opacity: .5;
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+
 .coleccion-page .burger {
   display: none;
   background: none;

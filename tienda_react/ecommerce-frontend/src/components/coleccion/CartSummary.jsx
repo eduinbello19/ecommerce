@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { formatearPrecio } from '../../utils/catalogo'
 
 export default function CartSummary({ items, open }) {
@@ -30,6 +31,16 @@ export default function CartSummary({ items, open }) {
         <span>TOTAL:</span>
         <span>{formatearPrecio(total)} COP</span>
       </div>
+
+      {items.length > 0 ? (
+        <Link className="cart-checkout" to="/pasarela" state={{ items }}>
+          CONTINUAR CON EL PAGO <span>→</span>
+        </Link>
+      ) : (
+        <button type="button" className="cart-checkout" disabled>
+          CONTINUAR CON EL PAGO <span>→</span>
+        </button>
+      )}
     </div>
   )
 }

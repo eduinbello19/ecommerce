@@ -153,8 +153,10 @@ export default function ColeccionPage() {
         idVariante: variante.idVariante,
         idProducto: producto.idProducto,
         nombre: producto.nombre,
+        color: variante.color,
         talla: variante.talla,
         precio: producto.precio,
+        rutaImagen: producto.rutaImagen,
       },
     ])
     setCarritoAbierto(true)

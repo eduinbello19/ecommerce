@@ -1,0 +1,574 @@
+.pasarela-page {
+  --bg: #0e0e0e;
+  --panel: #1a1a1a;
+  --field: #232323;
+  --line: #333333;
+  --line-soft: #262626;
+  --text: #ffffff;
+  --muted: #7a7a7a;
+  --accent: #c4ff00;
+  --mono: "Space Mono", monospace;
+  --display: "Syne", sans-serif;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pasarela-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pasarela-page button,
+.pasarela-page input,
+.pasarela-page select {
+  font-family: inherit;
+  color: inherit;
+}
+
+.pasarela-page .topbar {
+  min-height: 58px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(14, 14, 14, 0.9);
+}
+
+.pasarela-page .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pasarela-page .brand-mark {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #000;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 16px;
+  border: 2px solid #000;
+  outline: 1px solid var(--accent);
+}
+
+.pasarela-page .brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.pasarela-page .brand-text strong {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+}
+
+.pasarela-page .brand-text small {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: #9a9a9a;
+  margin-top: 3px;
+}
+
+.pasarela-page .topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.pasarela-page .currency {
+  padding: 5px 10px;
+  border: 1px solid #3a3a3a;
+  color: #b5b5b5;
+}
+
+.pasarela-page .back-link {
+  color: var(--accent);
+}
+
+.pasarela-page .layout {
+  flex: 1;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 24px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.pasarela-page .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 7px;
+  background: rgba(196, 255, 0, 0.1);
+  border: 1px solid rgba(196, 255, 0, 0.25);
+  color: var(--accent);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.pasarela-page .tag i {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  display: block;
+}
+
+.pasarela-page .intro h1 {
+  margin-top: 18px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+}
+
+.pasarela-page .subtitle {
+  margin-top: 16px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.pasarela-page .lead {
+  margin-top: 14px;
+  max-width: 400px;
+  color: #bdbdbd;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.pasarela-page .order-card {
+  margin-top: 28px;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+}
+
+.pasarela-page .section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--line);
+}
+
+.pasarela-page .section-title h2 {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.pasarela-page .section-title span {
+  color: var(--accent);
+  font-size: 9px;
+}
+
+.pasarela-page .product {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.pasarela-page .product-image {
+  width: 68px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  background: #242424;
+  border: 1px solid #333;
+  overflow: hidden;
+}
+
+.pasarela-page .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pasarela-page .product-image span {
+  color: var(--accent);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.pasarela-page .product-info h3 {
+  font-family: var(--display);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+
+.pasarela-page .product-info p {
+  color: #999;
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.pasarela-page .product-price {
+  font-size: 10px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.pasarela-page .totals {
+  padding-top: 18px;
+}
+
+.pasarela-page .total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #aaa;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.pasarela-page .final-total {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: #fff;
+  font-size: 11px;
+}
+
+.pasarela-page .final-total strong:last-child {
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.pasarela-page .security-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 12px;
+  background: rgba(196, 255, 0, 0.06);
+  border: 1px solid rgba(196, 255, 0, 0.18);
+}
+
+.pasarela-page .security-icon {
+  color: var(--accent);
+  font-size: 18px;
+}
+
+.pasarela-page .security-note p {
+  color: #aaa;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.pasarela-page .panel {
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  padding: 20px 32px 32px;
+}
+
+.pasarela-page .panel-head {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: -20px -32px 24px;
+  padding: 0 32px;
+  background: #1f1f1f;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.pasarela-page .panel-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+
+.pasarela-page .panel-head h2 i {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  display: block;
+}
+
+.pasarela-page .panel-head span {
+  color: #9a9a9a;
+  font-size: 9px;
+}
+
+.pasarela-page .form-section {
+  margin-bottom: 24px;
+}
+
+.pasarela-page .form-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.pasarela-page .form-title span {
+  color: var(--accent);
+  font-size: 11px;
+}
+
+.pasarela-page .row {
+  display: grid;
+  gap: 10px;
+}
+
+.pasarela-page .row.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.pasarela-page .field {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.pasarela-page .field > label {
+  display: block;
+  margin-bottom: 6px;
+  color: #8f8f8f;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.pasarela-page .field > label em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.pasarela-page .field input,
+.pasarela-page .field select {
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  background: var(--field);
+  border: 1px solid var(--line);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.pasarela-page .field input::placeholder {
+  color: #5e5e5e;
+}
+
+.pasarela-page .field input:focus,
+.pasarela-page .field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(196, 255, 0, 0.25);
+}
+
+.pasarela-page .field select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23bbbbbb' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.pasarela-page .field select option {
+  background: #1f1f1f;
+  color: #fff;
+}
+
+.pasarela-page .test-note {
+  margin-top: 4px;
+  padding: 9px;
+  background: #202020;
+  border-left: 2px solid var(--accent);
+  color: #929292;
+  font-size: 8px;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+
+.pasarela-page .payment-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 12px;
+  margin-top: 10px;
+  background: #222;
+  border: 1px solid var(--line);
+}
+
+.pasarela-page .payment-total span {
+  color: #aaa;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.pasarela-page .payment-total strong {
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.pasarela-page .submit {
+  width: 100%;
+  height: 46px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent);
+  border: 0;
+  color: #1a2300;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.pasarela-page .submit:hover {
+  filter: brightness(1.08);
+}
+
+.pasarela-page .submit:active {
+  transform: translateY(1px);
+}
+
+.pasarela-page .submit span {
+  font-size: 15px;
+}
+
+.pasarela-page .terms {
+  margin-top: 12px;
+  color: #777;
+  font-size: 8px;
+  text-align: center;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+
+.pasarela-page .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  border-top: 1px solid var(--line-soft);
+  color: #9a9a9a;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.pasarela-page .footer b {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .pasarela-page .layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 24px;
+  }
+
+  .pasarela-page .lead {
+    max-width: 500px;
+  }
+
+  .pasarela-page .panel {
+    padding: 20px 24px 28px;
+  }
+
+  .pasarela-page .panel-head {
+    margin-left: -24px;
+    margin-right: -24px;
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .pasarela-page .topbar {
+    padding: 0 16px;
+  }
+
+  .pasarela-page .topbar-right {
+    gap: 10px;
+    font-size: 8px;
+  }
+
+  .pasarela-page .currency {
+    display: none;
+  }
+
+  .pasarela-page .layout {
+    padding: 24px 16px;
+  }
+
+  .pasarela-page .intro h1 {
+    font-size: 32px;
+  }
+
+  .pasarela-page .row.two {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .pasarela-page .product {
+    grid-template-columns: 55px minmax(0, 1fr);
+  }
+
+  .pasarela-page .product-image {
+    width: 55px;
+    height: 65px;
+  }
+
+  .pasarela-page .product-price {
+    grid-column: 2;
+  }
+
+  .pasarela-page .panel {
+    padding: 20px 16px 24px;
+  }
+
+  .pasarela-page .panel-head {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 0 16px;
+  }
+
+  .pasarela-page .payment-total {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .pasarela-page .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

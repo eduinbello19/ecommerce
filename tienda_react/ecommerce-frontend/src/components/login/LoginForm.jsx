@@ -1,18 +1,25 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { validarCredenciales } from '../../services/authService'
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function LoginForm({ onMessage }) {
+  const navigate = useNavigate()
+  const redirectTimer = useRef(null)
   const [correo, setCorreo] = useState('')
   const [clave, setClave] = useState('')
   const [mantenerSesion, setMantenerSesion] = useState(true)
   const [mostrarClave, setMostrarClave] = useState(false)
   const [status, setStatus] = useState('idle')
 
+  useEffect(() => () => clearTimeout(redirectTimer.current), [])
+
   const handleSubmit = async (event) => {
     event.preventDefault()
+
+    clearTimeout(redirectTimer.current)
+    redirectTimer.current = null
 
     if (!EMAIL_PATTERN.test(correo.trim())) {
       onMessage('Ingrese un correo válido', true)
@@ -29,6 +36,7 @@ export default function LoginForm({ onMessage }) {
     try {
       await validarCredenciales({ correo: correo.trim(), claveHash: clave })
       onMessage('bienvenid@ a su cuenta', false)
+      redirectTimer.current = setTimeout(() => navigate('/coleccion', { replace: true }), 3000)
     } catch (error) {
       onMessage(error.message, true)
     } finally {
