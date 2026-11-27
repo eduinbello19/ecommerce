@@ -1,5 +1,3 @@
-import merchImg from '../../assets/imgloginmerch.jpg'
-
 export default function LoginIntro() {
   return (
     <section className="tarjeta">
@@ -19,7 +17,7 @@ export default function LoginIntro() {
       </p>
 
       <figure className="tarjeta">
-        <img src={merchImg} alt="Colección oficial KULT Studio" />
+        <img src="/img/recursospages/imgloginmerch.jpg" alt="Colección oficial KULT Studio" />
         <figcaption>COLECCIÓN OFICIAL // 2024.BOG</figcaption>
       </figure>
 

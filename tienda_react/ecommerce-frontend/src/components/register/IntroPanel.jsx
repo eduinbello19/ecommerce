@@ -1,5 +1,3 @@
-import previewImg from '../../assets/imgregistro.jpg'
-
 export default function IntroPanel() {
   return (
     <section className="intro">
@@ -12,7 +10,7 @@ export default function IntroPanel() {
       </p>
 
       <figure className="preview">
-        <img src={previewImg} alt="Registro de cuenta KULT STUDIO" />
+        <img src="/img/recursospages/imgregistro.jpg" alt="Registro de cuenta KULT STUDIO" />
         <figcaption>
           <div>
             <span>BOGOTÁ, COLOMBIA // 04.6097° N, 74.0817° W</span>
