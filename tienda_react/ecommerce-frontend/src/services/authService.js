@@ -9,7 +9,13 @@ export async function validarCredenciales({ correo, claveHash }) {
     body: JSON.stringify({ correo, claveHash }),
   })
 
-  if (response.ok) return true
+  if (response.ok) {
+    try {
+      return (await response.json()) || true
+    } catch {
+      return true
+    }
+  }
   if (response.status === 401) throw new Error(LOGIN_ERROR_MESSAGE)
 
   throw new Error('No fue posible conectar con el servidor. Intente más tarde.')

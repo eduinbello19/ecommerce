@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { validarCredenciales } from '../../services/authService'
+import { guardarSesion } from '../../utils/sesion'
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -34,7 +35,8 @@ export default function LoginForm({ onMessage }) {
     onMessage('', false)
 
     try {
-      await validarCredenciales({ correo: correo.trim(), claveHash: clave })
+      const usuario = await validarCredenciales({ correo: correo.trim(), claveHash: clave })
+      guardarSesion(usuario, mantenerSesion)
       onMessage('bienvenid@ a su cuenta', false)
       redirectTimer.current = setTimeout(() => navigate('/coleccion', { replace: true }), 3000)
     } catch (error) {

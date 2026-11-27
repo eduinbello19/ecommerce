@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema ecommerce
 -- -----------------------------------------------------
 
@@ -22,10 +25,11 @@ DROP TABLE IF EXISTS `ecommerce`.`categorias` ;
 CREATE TABLE IF NOT EXISTS `ecommerce`.`categorias` (
   `id_categoria` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(70) NULL,
+  `descripcion` VARCHAR(70) NULL DEFAULT NULL,
   PRIMARY KEY (`id_categoria`),
   UNIQUE INDEX `id_categoria_UNIQUE` (`id_categoria` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 12
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -48,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`usuarios` (
   UNIQUE INDEX `documento_UNIQUE` (`documento` ASC) VISIBLE,
   UNIQUE INDEX `correo_UNIQUE` (`correo` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -61,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`direcciones` (
   `id_direccion` INT NOT NULL AUTO_INCREMENT,
   `id_usuario` INT NOT NULL,
   `ciudad` VARCHAR(100) NOT NULL,
-  `codigo_postal` VARCHAR(20) NULL,
+  `codigo_postal` VARCHAR(20) NULL DEFAULT NULL,
   `direccion` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`id_direccion`),
   INDEX `fk_direcciones_usuarios` (`id_usuario` ASC) VISIBLE,
@@ -71,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`direcciones` (
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -82,8 +88,8 @@ DROP TABLE IF EXISTS `ecommerce`.`pedidos` ;
 
 CREATE TABLE IF NOT EXISTS `ecommerce`.`pedidos` (
   `id_pedido` INT NOT NULL AUTO_INCREMENT,
-  `fecha` DATETIME NULL,
-  `estado` ENUM("PENDIENTE", "PAGADO", "ENVIADO", "ENTREGADO") NOT NULL,
+  `fecha` DATETIME NULL DEFAULT NULL,
+  `estado` ENUM('PENDIENTE', 'PAGADO', 'ENVIADO', 'ENTREGADO') NOT NULL,
   `costo_envio` DECIMAL(10,2) NOT NULL,
   `subtotal` DECIMAL(12,2) NOT NULL,
   `total` DECIMAL(12,2) NOT NULL,
@@ -117,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`productos` (
   `nombre` VARCHAR(150) NOT NULL,
   `precio` DECIMAL(12,2) NOT NULL,
   `gramaje_gsm` INT NOT NULL,
+  `ruta_imagen` VARCHAR(200) NULL DEFAULT NULL,
   `id_categoria` INT NOT NULL,
   PRIMARY KEY (`id_producto`),
   INDEX `fk_productos_categorias` (`id_categoria` ASC) VISIBLE,
@@ -126,6 +133,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`productos` (
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 505
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -140,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`variantes` (
   `id_producto` INT NOT NULL,
   `talla` VARCHAR(10) NOT NULL,
   `color` VARCHAR(50) NOT NULL,
-  `stock` INT ZEROFILL NOT NULL,
+  `stock` INT(10) UNSIGNED ZEROFILL NOT NULL,
   PRIMARY KEY (`id_variante`),
   INDEX `fk_variantes_productos` (`id_producto` ASC) VISIBLE,
   CONSTRAINT `fk_variantes_productos`
@@ -188,12 +196,12 @@ DROP TABLE IF EXISTS `ecommerce`.`pagos` ;
 CREATE TABLE IF NOT EXISTS `ecommerce`.`pagos` (
   `id_pago` INT NOT NULL AUTO_INCREMENT,
   `id_pedido` INT NOT NULL,
-  `medio` ENUM("TC", "TB", "PSE") NOT NULL,
+  `medio` VARCHAR(30) NOT NULL,
   `valor` DECIMAL(12,0) NOT NULL,
-  `fecha_pago` DATETIME NULL,
+  `fecha_pago` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`id_pago`),
-  INDEX `fk_pagos_pedidos` (`id_pedido` ASC) VISIBLE,
   UNIQUE INDEX `id_pedido_UNIQUE` (`id_pedido` ASC) VISIBLE,
+  INDEX `fk_pagos_pedidos` (`id_pedido` ASC) VISIBLE,
   CONSTRAINT `fk_pagos_pedidos`
     FOREIGN KEY (`id_pedido`)
     REFERENCES `ecommerce`.`pedidos` (`id_pedido`)

@@ -3,6 +3,7 @@ import '../styles/pasarela.css'
 import TopBar from '../components/layout/TopBar'
 import PasarelaSummary from '../components/pasarela/PasarelaSummary'
 import PasarelaForm from '../components/pasarela/PasarelaForm'
+import { registrarCheckout } from '../services/checkoutService'
 
 const ENVIO = 10000
 
@@ -35,7 +36,7 @@ export default function PasarelaPage() {
 
       <main className="layout">
         <PasarelaSummary items={items} subtotal={subtotal} envio={ENVIO} total={total} />
-        <PasarelaForm total={total} />
+        <PasarelaForm total={total} items={items} onCheckout={registrarCheckout} />
       </main>
 
       <footer className="footer">

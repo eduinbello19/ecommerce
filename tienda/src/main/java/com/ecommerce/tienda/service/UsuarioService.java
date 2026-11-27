@@ -2,6 +2,7 @@
 package com.ecommerce.tienda.service;
 
 import com.ecommerce.tienda.dto.LoginRequest;
+import com.ecommerce.tienda.dto.LoginResponse;
 import com.ecommerce.tienda.model.UsuarioModel;
 import com.ecommerce.tienda.repository.UsuarioRepository;
 import java.util.List;
@@ -63,7 +64,7 @@ public class UsuarioService {
         return usuarioRepository.save(actualExistente);
     }
 
-    public void autenticar(LoginRequest login) {
+    public LoginResponse autenticar(LoginRequest login) {
         if (login == null || login.correo() == null || login.correo().isBlank()
                 || login.claveHash() == null || login.claveHash().isBlank()) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, MENSAJE_LOGIN);
@@ -75,6 +76,12 @@ public class UsuarioService {
         if (!usuario.getClaveHash().equals(login.claveHash().trim())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, MENSAJE_LOGIN);
         }
+
+        return new LoginResponse(
+            usuario.getIdUsuario(),
+            usuario.getCorreo(),
+            usuario.getNombre()
+        );
     }
 
     // VALIDAR USUARIO

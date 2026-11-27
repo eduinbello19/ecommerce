@@ -2,6 +2,7 @@
 package com.ecommerce.tienda.controller;
 
 import com.ecommerce.tienda.dto.LoginRequest;
+import com.ecommerce.tienda.dto.LoginResponse;
 import com.ecommerce.tienda.model.UsuarioModel;
 import com.ecommerce.tienda.service.UsuarioService;
 import java.util.List;
@@ -38,8 +39,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public void login(@RequestBody LoginRequest login) {
-        usuarioService.autenticar(login);
+    public LoginResponse login(@RequestBody LoginRequest login) {
+        return usuarioService.autenticar(login);
     }
 
     // MODIFICAR O ACTUALIZAR USUARIO
