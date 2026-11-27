@@ -1117,6 +1117,11 @@
     align-items: flex-start;
   }
 
+  .coleccion-page .usuario-estado-dock {
+    top: 70px;
+    right: 12px;
+  }
+
   .coleccion-page .ticker .wrap {
     justify-content: space-between;
   }
