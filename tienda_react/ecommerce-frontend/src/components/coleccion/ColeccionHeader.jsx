@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import CartSummary from './CartSummary'
+import UsuarioEstado from '../layout/UsuarioEstado'
 import logo from '../../assets/logokult.png'
 
 export default function ColeccionHeader({ search, onSearchChange, cart, cartOpen, onCartToggle }) {
@@ -93,6 +94,10 @@ export default function ColeccionHeader({ search, onSearchChange, cart, cartOpen
           </div>
         </div>
       </header>
+
+      <div className="usuario-estado-dock">
+        <UsuarioEstado />
+      </div>
     </>
   )
 }

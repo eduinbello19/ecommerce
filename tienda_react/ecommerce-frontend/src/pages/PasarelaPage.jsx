@@ -32,7 +32,7 @@ export default function PasarelaPage() {
 
   return (
     <div className="pasarela-page">
-      <TopBar backTo="/coleccion" />
+      <TopBar backTo="/coleccion" mostrarUsuario />
 
       <main className="layout">
         <PasarelaSummary items={items} subtotal={subtotal} envio={ENVIO} total={total} />

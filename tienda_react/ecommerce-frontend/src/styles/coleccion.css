@@ -118,6 +118,23 @@
   min-height: 68px;
 }
 
+.coleccion-page .usuario-estado-dock {
+  position: fixed;
+  top: 76px;
+  right: var(--gap);
+  z-index: 49;
+  pointer-events: none;
+}
+
+.coleccion-page .usuario-estado-dock .usuario-estado {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid var(--lime);
+  background: rgba(12, 13, 15, 0.92);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  font: 0.62rem var(--mono-font);
+}
+
 .coleccion-page .brand {
   display: flex;
   align-items: center;

@@ -102,8 +102,8 @@ public class CheckoutService {
                 );
             }
 
-            Integer stock = variante.getStock();
-            if (stock == null || stock < cantidad) {
+            int filas = varianteRepository.descontarStock(idVariante, cantidad);
+            if (filas != 1) {
                 throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
                     "El stock disponible es insuficiente"
