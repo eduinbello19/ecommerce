@@ -2,6 +2,16 @@ fecha de actualización: 02/11/2026
 
 En el proyecto se integraron y documentaron los avances correspondientes a las sesiones de estudio, implementando en la carpeta js un archivo "app.js" con el reto lógico del 26 de octubre, mientras que en "demo.js" se validaron mediante consola los ejercicios de manipulación del DOM con selectores, add y toggle de la sesión del 29 de octubre. Asimismo, se desarrolló la interfaz de botonsumayresta.html vinculada a "pruebadom.js" para gestionar eventos de incremento y decremento por click, y se configuró en "login.html" la validación de formularios con el método preventDefault() a través de "login.js". Finalmente, dentro de la sección de comercio electrónico, se habilitó en "colection.html" un sistema de filtrado dinámico mediante funciones y la clase toggle, complementado con un carrito de compras interactivo que utiliza un arreglo de estado, el método push() y una función render() para actualizar en tiempo real los elementos seleccionados,la opcion de dar click para seleccionar y deseleccionar las tallas, el contador y el valor total en el DOM.
 
-fecha de actualización: 09/11/226
+fecha de actualización: 09/11/2026
 
 En el proyecto se integraron y documentaron los avances correspondientes a las sesiones de estudio, realizando el modelo entidad-relación (MER) mediante MySQL Workbench, de acuerdo con los lineamientos establecidos en la sesión del miércoles 04/11/2026. Para ello, se hizo uso de las opciones **Forward Engineer** y **Reverse Engineer**, obteniendo como resultado los archivos **"ecommerce.mwb"** y **"ecommercesql.sql"**, los cuales se encuentran almacenados en la carpeta **"BD"** del proyecto. Asimismo, utilizando herramientas como Java, MySQL Workbench, NetBeans y Apache Tomcat, se llevó a cabo la conexión entre el proyecto desarrollado en NetBeans y la base de datos, realizando las respectivas configuraciones y estableciendo la comunicación con la entidad de categorías. Este proceso se desarrolló tomando como referencia los contenidos compartidos durante la sesión del viernes 06/11/2026 y el video complementario publicado el sábado 07/11/2026.
+
+fecha de actualización:16/11/2026
+
+Se realiza la creación de los documentos Model, Service, Repository y Controller de las 7 entidades faltantes del proyecto y su correcto enlace en la API REST, también se anexa el link del video de la socialización.
+
+fecha de actualización:23/11/2026
+
+se llevó a cabo el desarrollo e integración del frontend utilizando React y Vite, transformando las estructuras HTML iniciales en componentes reutilizables y organizando el proyecto por páginas, componentes, servicios, utilidades y estilos. Se configuró la navegación mediante React Router y el proxy de Vite para establecer la comunicación con la API.
+
+Finalmente, se integraron las funcionalidades de registro de usuarios, inicio de sesión, consulta del catálogo y creación y edición de productos, incluyendo la gestión de categorías y variantes. Se realizaron las respectivas validaciones y pruebas de conexión entre React, Spring Boot y MySQL, comprobando el registro de productos y sus variantes desde la interfaz hasta su almacenamiento en la base de datos.
