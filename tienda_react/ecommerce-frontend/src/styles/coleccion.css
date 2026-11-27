@@ -313,6 +313,33 @@
   gap: 10px;
 }
 
+.coleccion-page .cart-item-info {
+  min-width: 0;
+}
+
+.coleccion-page .cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.coleccion-page .cart-remove {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.coleccion-page .cart-remove:hover {
+  color: var(--red);
+}
+
 .coleccion-page .cart-item small,
 .coleccion-page .cart-item b {
   color: var(--lime);

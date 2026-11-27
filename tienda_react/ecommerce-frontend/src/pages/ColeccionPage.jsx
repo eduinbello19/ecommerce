@@ -162,6 +162,10 @@ export default function ColeccionPage() {
     setCarritoAbierto(true)
   }
 
+  const quitarDelCarrito = (indice) => {
+    setCarrito((items) => items.filter((_, posicion) => posicion !== indice))
+  }
+
   return (
     <div className="coleccion-page">
       <ColeccionHeader
@@ -170,6 +174,7 @@ export default function ColeccionPage() {
         cart={carrito}
         cartOpen={carritoAbierto}
         onCartToggle={() => setCarritoAbierto((valor) => !valor)}
+        onRemove={quitarDelCarrito}
       />
 
       <section className="phead">

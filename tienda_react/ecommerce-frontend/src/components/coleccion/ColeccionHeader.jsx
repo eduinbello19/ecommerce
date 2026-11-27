@@ -4,7 +4,7 @@ import CartSummary from './CartSummary'
 import UsuarioEstado from '../layout/UsuarioEstado'
 import logo from '../../assets/logokult.png'
 
-export default function ColeccionHeader({ search, onSearchChange, cart, cartOpen, onCartToggle }) {
+export default function ColeccionHeader({ search, onSearchChange, cart, cartOpen, onCartToggle, onRemove }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const contador = String(cart.length).padStart(2, '0')
 
@@ -76,7 +76,7 @@ export default function ColeccionHeader({ search, onSearchChange, cart, cartOpen
                 <b>{contador}</b>
               </button>
 
-              <CartSummary items={cart} open={cartOpen} />
+              <CartSummary items={cart} open={cartOpen} onRemove={onRemove} />
             </div>
 
             <button
