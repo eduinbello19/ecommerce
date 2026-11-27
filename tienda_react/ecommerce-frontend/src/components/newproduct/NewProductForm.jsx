@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import VariantEditor from './VariantEditor'
 import {
@@ -9,18 +9,31 @@ import {
   crearProducto,
   crearVariante,
   describeCatalogoError,
+  eliminarCategoria,
+  eliminarProducto,
   eliminarVariante,
   obtenerCatalogo,
 } from '../../services/catalogoService'
 import { normalizarRutaImagen } from '../../utils/catalogo'
-import { nuevaVariante, validarFormulario } from '../../utils/nuevoProducto'
+import {
+  etiquetaVariante,
+  nuevaVariante,
+  obtenerPlanEliminacion,
+  validarEliminacion,
+  validarFormulario,
+} from '../../utils/nuevoProducto'
 
-const CATALOGO_VACIO = { categorias: [], productos: [], variantes: [] }
+const CATALOGO_VACIO = { categorias: [], productos: [], variantes: [], detallesPedido: [] }
 const CATEGORIA_VACIA = { nombre: '', descripcion: '' }
 const PRODUCTO_VACIO = { nombre: '', precio: '', gramajeGsm: '', rutaImagen: '' }
+const PLAN_VACIO = { categorias: [], productos: [], variantes: [], bloqueadas: [] }
+const ETIQUETAS_MODO = { nuevo: '[ALTA]', editar: '[EDICIÓN]', eliminar: '[ELIMINAR]' }
+const ETIQUETAS_ELIMINAR = { producto: 'PRODUCTO', categoria: 'CATEGORÍA', variante: 'VARIANTE' }
 const INITIAL_FORM = {
   modo: 'nuevo',
+  eliminarTipo: 'producto',
   productoId: '',
+  varianteId: '',
   categoriaModo: 'nueva',
   categoriaId: '',
   categoria: CATEGORIA_VACIA,
@@ -43,11 +56,14 @@ export default function NewProductForm() {
   const [status, setStatus] = useState('idle')
   const [serverMessage, setServerMessage] = useState('')
   const [imagenFallida, setImagenFallida] = useState('')
+  const [confirmacionPendiente, setConfirmacionPendiente] = useState(false)
+
+  const obtenerDatosCatalogo = useCallback(() => obtenerCatalogo({ incluirDetalles: true }), [])
 
   useEffect(() => {
     let activo = true
 
-    obtenerCatalogo()
+    obtenerDatosCatalogo()
       .then((datos) => {
         if (!activo) return
         setCatalogo(datos)
@@ -62,12 +78,13 @@ export default function NewProductForm() {
     return () => {
       activo = false
     }
-  }, [])
+  }, [obtenerDatosCatalogo])
 
   const limpiarMensajes = () => {
     setErrors({})
     setStatus('idle')
     setServerMessage('')
+    setConfirmacionPendiente(false)
   }
 
   const cambiarModo = (modo) => {
@@ -81,6 +98,7 @@ export default function NewProductForm() {
     setVariantes([nuevaVariante()])
     setVariantesOriginales([])
     setVariantesEliminadas([])
+    setImagenFallida('')
     limpiarMensajes()
   }
 
@@ -106,6 +124,37 @@ export default function NewProductForm() {
       return { ...current, categoriaModo }
     })
     limpiarMensajes()
+  }
+
+  const cambiarEliminarTipo = (eliminarTipo) => {
+    setForm((current) => ({
+      ...current,
+      eliminarTipo,
+      productoId: '',
+      varianteId: '',
+      categoriaId: '',
+    }))
+    limpiarMensajes()
+  }
+
+  const handleEliminarChange = (event) => {
+    const { id, value } = event.target
+
+    setForm((current) => {
+      if (id === 'categoriaEliminarId') return { ...current, categoriaId: value }
+      if (id === 'varianteEliminarId') return { ...current, varianteId: value }
+      return { ...current, productoId: value, varianteId: '' }
+    })
+    setErrors((current) => ({
+      ...current,
+      categoriaEliminarId: undefined,
+      productoEliminarId: undefined,
+      varianteProductoId: undefined,
+      varianteEliminarId: undefined,
+      eliminar: undefined,
+    }))
+    setStatus('idle')
+    setConfirmacionPendiente(false)
   }
 
   const handleChange = (event) => {
@@ -218,8 +267,28 @@ export default function NewProductForm() {
     setVariantes((current) => [...current, nuevaVariante()])
   }
 
+  const recargarCatalogo = async () => {
+    try {
+      setCatalogo(await obtenerDatosCatalogo())
+      setEstadoCatalogo('listo')
+      setErrorCatalogo('')
+    } catch (fallo) {
+      setErrorCatalogo(fallo.message || 'No fue posible recargar el catálogo.')
+      setEstadoCatalogo('error')
+    }
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
+
+    if (form.modo === 'eliminar') {
+      const nextErrors = validarEliminacion(form, catalogo)
+      setErrors(nextErrors)
+      setConfirmacionPendiente(Object.keys(nextErrors).length === 0)
+      setStatus('idle')
+      setServerMessage('')
+      return
+    }
 
     const nextErrors = validarFormulario(form, variantes)
     setErrors(nextErrors)
@@ -334,18 +403,71 @@ export default function NewProductForm() {
     }
   }
 
+  const confirmarEliminacion = async () => {
+    if (status === 'loading') return
+
+    const plan = obtenerPlanEliminacion(form, catalogo)
+    if (plan.bloqueadas.length > 0) {
+      setErrors(validarEliminacion(form, catalogo))
+      setConfirmacionPendiente(false)
+      return
+    }
+
+    setStatus('loading')
+    setServerMessage('')
+
+    try {
+      for (const id of plan.variantes) {
+        await eliminarVariante(id)
+      }
+      for (const id of plan.productos) {
+        await eliminarProducto(id)
+      }
+      for (const id of plan.categorias) {
+        await eliminarCategoria(id)
+      }
+
+      await recargarCatalogo()
+      setForm((current) => ({ ...current, productoId: '', varianteId: '', categoriaId: '' }))
+      setConfirmacionPendiente(false)
+      setStatus('success')
+      setServerMessage('Eliminación completada correctamente.')
+    } catch (fallo) {
+      setStatus('error')
+      setServerMessage(fallo.status ? describeCatalogoError(fallo) : fallo.message || describeCatalogoError(fallo))
+      setConfirmacionPendiente(false)
+      await recargarCatalogo()
+    }
+  }
+
+  const cancelarEliminacion = () => {
+    setConfirmacionPendiente(false)
+    setErrors({})
+    setStatus('idle')
+    setServerMessage('')
+  }
+
   const rutaImagen = normalizarRutaImagen(form.producto.rutaImagen)
   const cargando = status === 'loading'
   const seleccionBloqueada = estadoCatalogo !== 'listo' || cargando
+  const planEliminacion = form.modo === 'eliminar'
+    ? obtenerPlanEliminacion(form, catalogo)
+    : PLAN_VACIO
+  const idsVariantesEnPedido = new Set(
+    (catalogo.detallesPedido || []).map((detalle) => Number(detalle.idVariante)),
+  )
+  const variantesDelProducto = form.productoId
+    ? catalogo.variantes.filter((variante) => Number(variante.idProducto) === Number(form.productoId))
+    : []
 
   return (
     <form className="new-product-form" noValidate onSubmit={handleSubmit}>
       <div className="sizes modo">
         <div className="sizes-head">
           <span>MODO DE OPERACIÓN</span>
-          <b>{form.modo === 'nuevo' ? '[ALTA]' : '[EDICIÓN]'}</b>
+          <b>{ETIQUETAS_MODO[form.modo]}</b>
         </div>
-        <div className="sizes-grid dos">
+        <div className="sizes-grid tres">
           <input
             id="modo-nuevo"
             type="radio"
@@ -364,12 +486,185 @@ export default function NewProductForm() {
             disabled={cargando}
           />
           <label htmlFor="modo-editar">EDITAR PRODUCTO</label>
+          <input
+            id="modo-eliminar"
+            type="radio"
+            name="modo"
+            checked={form.modo === 'eliminar'}
+            onChange={() => cambiarModo('eliminar')}
+            disabled={cargando}
+          />
+          <label htmlFor="modo-eliminar">ELIMINAR PRODUCTO</label>
         </div>
       </div>
 
-      <section className="panel bloque">
-        <div className="panel-head">
-          <h2><i></i>[01] CATEGORÍA</h2>
+      {form.modo === 'eliminar' && (
+        <section className="panel bloque delete-panel">
+          <div className="panel-head">
+            <h2><i></i>[01] ELIMINACIÓN</h2>
+            <span>[{ETIQUETAS_ELIMINAR[form.eliminarTipo]}]</span>
+          </div>
+
+          {estadoCatalogo === 'error' && (
+            <p className="form-message error" role="alert">{errorCatalogo}</p>
+          )}
+          {estadoCatalogo === 'cargando' && <p className="modo-nota">CARGANDO CATÁLOGO...</p>}
+
+          <div className="sizes delete-tipo">
+            <div className="sizes-head">
+              <span>TIPO DE REGISTRO</span>
+              <b>[{ETIQUETAS_ELIMINAR[form.eliminarTipo]}]</b>
+            </div>
+            <div className="sizes-grid tres">
+              <input
+                id="eliminar-producto"
+                type="radio"
+                name="eliminarTipo"
+                checked={form.eliminarTipo === 'producto'}
+                onChange={() => cambiarEliminarTipo('producto')}
+                disabled={seleccionBloqueada}
+              />
+              <label htmlFor="eliminar-producto">PRODUCTO</label>
+              <input
+                id="eliminar-categoria"
+                type="radio"
+                name="eliminarTipo"
+                checked={form.eliminarTipo === 'categoria'}
+                onChange={() => cambiarEliminarTipo('categoria')}
+                disabled={seleccionBloqueada}
+              />
+              <label htmlFor="eliminar-categoria">CATEGORÍA</label>
+              <input
+                id="eliminar-variante"
+                type="radio"
+                name="eliminarTipo"
+                checked={form.eliminarTipo === 'variante'}
+                onChange={() => cambiarEliminarTipo('variante')}
+                disabled={seleccionBloqueada}
+              />
+              <label htmlFor="eliminar-variante">VARIANTE</label>
+            </div>
+          </div>
+
+          {form.eliminarTipo === 'categoria' && (
+            <div className="field">
+              <label htmlFor="categoriaEliminarId">CATEGORÍA A ELIMINAR <em>•</em></label>
+              <select
+                id="categoriaEliminarId"
+                value={form.categoriaId}
+                onChange={handleEliminarChange}
+                disabled={seleccionBloqueada}
+              >
+                <option value="">Seleccionar...</option>
+                {catalogo.categorias.map((categoria) => (
+                  <option key={categoria.idCategoria} value={categoria.idCategoria}>
+                    {categoria.nombre} [#{categoria.idCategoria}]
+                  </option>
+                ))}
+              </select>
+              {errors.categoriaEliminarId && <p className="field-error">{errors.categoriaEliminarId}</p>}
+            </div>
+          )}
+
+          {form.eliminarTipo === 'producto' && (
+            <div className="field">
+              <label htmlFor="productoEliminarId">PRODUCTO A ELIMINAR <em>•</em></label>
+              <select
+                id="productoEliminarId"
+                value={form.productoId}
+                onChange={handleEliminarChange}
+                disabled={seleccionBloqueada}
+              >
+                <option value="">Seleccionar...</option>
+                {catalogo.productos.map((producto) => (
+                  <option key={producto.idProducto} value={producto.idProducto}>
+                    {producto.nombre} [#{producto.idProducto}]
+                  </option>
+                ))}
+              </select>
+              {errors.productoEliminarId && <p className="field-error">{errors.productoEliminarId}</p>}
+            </div>
+          )}
+
+          {form.eliminarTipo === 'variante' && (
+            <>
+              <div className="field">
+                <label htmlFor="varianteProductoId">PRODUCTO DE LA VARIANTE <em>•</em></label>
+                <select
+                  id="varianteProductoId"
+                  value={form.productoId}
+                  onChange={handleEliminarChange}
+                  disabled={seleccionBloqueada}
+                >
+                  <option value="">Seleccionar...</option>
+                  {catalogo.productos.map((producto) => (
+                    <option key={producto.idProducto} value={producto.idProducto}>
+                      {producto.nombre} [#{producto.idProducto}]
+                    </option>
+                  ))}
+                </select>
+                {errors.varianteProductoId && <p className="field-error">{errors.varianteProductoId}</p>}
+              </div>
+              <div className="field">
+                <label htmlFor="varianteEliminarId">VARIANTE A ELIMINAR <em>•</em></label>
+                <select
+                  id="varianteEliminarId"
+                  value={form.varianteId}
+                  onChange={handleEliminarChange}
+                  disabled={seleccionBloqueada || !form.productoId}
+                >
+                  <option value="">Seleccionar...</option>
+                  {variantesDelProducto.map((variante) => (
+                    <option key={variante.idVariante} value={variante.idVariante}>
+                      {etiquetaVariante(variante)}
+                      {idsVariantesEnPedido.has(Number(variante.idVariante)) ? ' [EN PEDIDO]' : ''}
+                    </option>
+                  ))}
+                </select>
+                {errors.varianteEliminarId && <p className="field-error">{errors.varianteEliminarId}</p>}
+              </div>
+              {form.productoId && variantesDelProducto.length === 0 && (
+                <p className="modo-nota">ESTE PRODUCTO NO TIENE VARIANTES.</p>
+              )}
+            </>
+          )}
+
+          <div className="delete-summary">
+            <span>RESUMEN DEL BORRADO</span>
+            <p>
+              {planEliminacion.categorias.length} categoría(s) · {planEliminacion.productos.length} producto(s) · {planEliminacion.variantes.length} variante(s)
+            </p>
+            {planEliminacion.bloqueadas.length > 0 && (
+              <p className="delete-warning">
+                {planEliminacion.bloqueadas.map(etiquetaVariante).join(', ')} en pedidos existentes.
+              </p>
+            )}
+          </div>
+
+          {errors.eliminar && <p className="form-message error" role="alert">{errors.eliminar}</p>}
+
+          {confirmacionPendiente && (
+            <div className="delete-confirm" role="alertdialog" aria-labelledby="titulo-confirmar-eliminacion">
+              <p id="titulo-confirmar-eliminacion">CONFIRMAR ELIMINACIÓN</p>
+              <p>Esta acción no se puede deshacer.</p>
+              <div className="delete-confirm-actions">
+                <button type="button" className="submit" onClick={confirmarEliminacion} disabled={cargando}>
+                  CONFIRMAR ELIMINACIÓN
+                </button>
+                <button type="button" className="submit submit-secondary" onClick={cancelarEliminacion} disabled={cargando}>
+                  CANCELAR
+                </button>
+              </div>
+            </div>
+          )}
+        </section>
+      )}
+
+      {form.modo !== 'eliminar' && (
+        <>
+          <section className="panel bloque">
+            <div className="panel-head">
+              <h2><i></i>[01] CATEGORÍA</h2>
           <span>[KULT // LAB]</span>
         </div>
 
@@ -583,6 +878,8 @@ export default function NewProductForm() {
           disabled={cargando}
         />
       </section>
+        </>
+      )}
 
       {status === 'error' && (
         <p className="form-message error" role="alert">{serverMessage}</p>
@@ -593,10 +890,22 @@ export default function NewProductForm() {
         </p>
       )}
 
-      <button className="submit" type="submit" disabled={cargando || status === 'success'}>
+      <button
+        className="submit"
+        type="submit"
+        disabled={cargando || status === 'success' || (form.modo === 'eliminar' && confirmacionPendiente)}
+      >
         {cargando
-          ? (form.modo === 'editar' ? 'ACTUALIZANDO PRODUCTO...' : 'REGISTRANDO PRODUCTO...')
-          : (form.modo === 'editar' ? 'GUARDAR CAMBIOS' : 'REGISTRAR PRODUCTO')}
+          ? (form.modo === 'eliminar'
+            ? 'ELIMINANDO REGISTROS...'
+            : form.modo === 'editar'
+              ? 'ACTUALIZANDO PRODUCTO...'
+              : 'REGISTRANDO PRODUCTO...')
+          : form.modo === 'eliminar'
+            ? 'REVISAR ELIMINACIÓN'
+            : form.modo === 'editar'
+              ? 'GUARDAR CAMBIOS'
+              : 'REGISTRAR PRODUCTO'}
         <span>→</span>
       </button>
     </form>

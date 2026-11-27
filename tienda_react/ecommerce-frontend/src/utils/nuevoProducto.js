@@ -93,3 +93,88 @@ export function validarFormulario(form, variantes) {
 
   return errors
 }
+
+function mismoId(valor, id) {
+  return Number(valor) === Number(id)
+}
+
+export function etiquetaVariante(variante) {
+  return `#${variante.idVariante} ${variante.talla || '?'} / ${variante.color || '?'}`
+}
+
+export function obtenerPlanEliminacion(form, catalogo) {
+  const referenciadas = new Set(
+    (catalogo.detallesPedido || []).map((detalle) => Number(detalle.idVariante)),
+  )
+  const plan = { categorias: [], productos: [], variantes: [], bloqueadas: [] }
+
+  if (form.eliminarTipo === 'categoria' && form.categoriaId) {
+    const productos = catalogo.productos.filter((producto) => mismoId(producto.idCategoria, form.categoriaId))
+    const variantes = catalogo.variantes.filter((variante) => (
+      productos.some((producto) => mismoId(producto.idProducto, variante.idProducto))
+    ))
+
+    plan.categorias = [Number(form.categoriaId)]
+    plan.productos = productos.map((producto) => Number(producto.idProducto))
+    plan.variantes = variantes.map((variante) => Number(variante.idVariante))
+    plan.bloqueadas = variantes.filter((variante) => referenciadas.has(Number(variante.idVariante)))
+    return plan
+  }
+
+  if (form.eliminarTipo === 'producto' && form.productoId) {
+    const variantes = catalogo.variantes.filter((variante) => mismoId(variante.idProducto, form.productoId))
+
+    plan.productos = [Number(form.productoId)]
+    plan.variantes = variantes.map((variante) => Number(variante.idVariante))
+    plan.bloqueadas = variantes.filter((variante) => referenciadas.has(Number(variante.idVariante)))
+    return plan
+  }
+
+  if (form.eliminarTipo === 'variante' && form.varianteId) {
+    const variante = catalogo.variantes.find((item) => mismoId(item.idVariante, form.varianteId))
+    if (!variante) return plan
+
+    plan.variantes = [Number(variante.idVariante)]
+    plan.bloqueadas = referenciadas.has(Number(variante.idVariante)) ? [variante] : []
+    return plan
+  }
+
+  return plan
+}
+
+export function validarEliminacion(form, catalogo) {
+  const errors = {}
+  const plan = obtenerPlanEliminacion(form, catalogo)
+
+  if (form.eliminarTipo === 'categoria') {
+    if (!form.categoriaId) {
+      errors.categoriaEliminarId = 'Selecciona una categoría para eliminar.'
+    } else if (!catalogo.categorias.some((categoria) => mismoId(categoria.idCategoria, form.categoriaId))) {
+      errors.categoriaEliminarId = 'La categoría ya no existe. Recarga el catálogo.'
+    }
+  }
+
+  if (form.eliminarTipo === 'producto') {
+    if (!form.productoId) {
+      errors.productoEliminarId = 'Selecciona un producto para eliminar.'
+    } else if (!catalogo.productos.some((producto) => mismoId(producto.idProducto, form.productoId))) {
+      errors.productoEliminarId = 'El producto ya no existe. Recarga el catálogo.'
+    }
+  }
+
+  if (form.eliminarTipo === 'variante') {
+    if (!form.productoId) errors.varianteProductoId = 'Selecciona el producto de la variante.'
+    if (!form.varianteId) {
+      errors.varianteEliminarId = 'Selecciona una variante para eliminar.'
+    } else if (!catalogo.variantes.some((variante) => mismoId(variante.idVariante, form.varianteId))) {
+      errors.varianteEliminarId = 'La variante ya no existe. Recarga el catálogo.'
+    }
+  }
+
+  if (plan.bloqueadas.length > 0) {
+    const nombres = plan.bloqueadas.map(etiquetaVariante).join(', ')
+    errors.eliminar = `No se puede eliminar: ${nombres} ${plan.bloqueadas.length === 1 ? 'aparece' : 'aparecen'} en pedidos existentes.`
+  }
+
+  return errors
+}
