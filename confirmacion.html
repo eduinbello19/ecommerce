@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Confirmación | KULT STUDIO</title>
+
+    <!-- Tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="css/confirmacioncss.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <header class="topbar">
+
+        <div class="brand">
+
+            <img src="img/logokult.png"
+                 alt="Logo KULT Studio"
+                 style="height: 35px;">
+
+            <div class="brand-text">
+                <strong>KULT</strong>
+                <small>STUDIO // LAB</small>
+            </div>
+
+        </div>
+
+        <div class="topbar-right">
+
+            <a href="tienda.html" class="back-link">
+                [ VOLVER A LA TIENDA ]
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="confirmation-container">
+
+        <!-- MENSAJE PRINCIPAL -->
+        <section class="confirmation-card">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <span class="tag">
+                PROTOCOLO DE COMPRA // COMPLETADO
+            </span>
+
+            <!-- ENCABEZADO CON IMAGEN KULT -->
+            <div class="main-title">
+
+                <h1>PEDIDO</h1>
+
+                <!-- IMAGEN KULT: REEMPLAZAR AQUÍ SI ES NECESARIO -->
+                <img
+                    src="img/logokult.png"
+                    alt="KULT STUDIO"
+                    class="kult-image"
+                >
+
+                <h1>CONFIRMADO</h1>
+
+            </div>
+
+            <div class="title-line"></div>
+
+
+            <!-- MENSAJE DE FELICITACIÓN -->
+            <div class="welcome-message">
+
+                <h2>
+                    ¡FELICIDADES,
+                    <span id="nombreUsuario">CLIENTE</span>!
+                </h2>
+
+                <p>
+                    Tu compra se ha realizado correctamente.
+                    Tu pedido ya está confirmado y estamos
+                    preparando todo para que recibas tus
+                    productos KULT STUDIO.
+                </p>
+
+            </div>
+
+
+            <!-- RESUMEN DEL PEDIDO -->
+            <div class="order-summary">
+
+                <div class="summary-header">
+
+                    <h3>DETALLES DE TU PEDIDO</h3>
+
+                    <span>ORDEN #0001</span>
+
+                </div>
+
+                <!-- PRODUCTOS SELECCIONADOS -->
+                <div class="product-list" id="listaProductos">
+
+                    <!-- LOS PRODUCTOS SE CARGAN DESDE JAVASCRIPT -->
+
+                </div>
+
+                <!-- TOTAL -->
+                <div class="summary-total">
+
+                    <span>TOTAL DE TU COMPRA</span>
+
+                    <strong id="totalPedido">
+                        $169.800 COP
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- MENSAJE COMERCIAL -->
+            <div class="thank-you-message">
+
+                <span class="thank-icon">✦</span>
+
+                <h3>¡GRACIAS POR ELEGIR KULT!</h3>
+
+                <p>
+                    Nos encanta que formes parte de nuestra comunidad.
+                    Esperamos que disfrutes cada uno de tus productos
+                    tanto como nosotros disfrutamos crearlos.
+                </p>
+
+                <p>
+                    Mantente pendiente de tu pedido y prepárate para
+                    descubrir lo que viene. Muy pronto tendremos
+                    nuevos lanzamientos, colecciones y sorpresas
+                    especialmente para ti.
+                </p>
+
+            </div>
+
+
+            <!-- ESTADO DEL PEDIDO -->
+            <div class="delivery-status">
+
+                <div class="status-icon">
+                    ✓
+                </div>
+
+                <div class="status-text">
+
+                    <strong>PEDIDO CONFIRMADO</strong>
+
+                    <span>
+                        Tu compra ha sido registrada correctamente.
+                    </span>
+
+                </div>
+
+                <span class="active-label">
+                    CONFIRMADO
+                </span>
+
+            </div>
+
+
+            <!-- BOTÓN DE REGRESO -->
+            <a href="tienda.html" class="back-button">
+
+                SEGUIR EXPLORANDO
+
+                <span>→</span>
+
+            </a>
+
+
+            <p class="footer-message">
+                KULT STUDIO // DEFINE YOUR OWN STYLE.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+
+        <span>© 2026 KULT STUDIO // LAB</span>
+
+        <span>
+            SISTEMA DE COMPRA <b>● ACTIVO</b>
+        </span>
+
+    </footer>
+
+
+    <!-- DATOS DE CONFIRMACIÓN -->
+    <script>
+
+        /*
+        ============================================
+        DATOS DEL PEDIDO
+        ============================================
+
+        MODIFICA ESTOS VALORES PARA MOSTRAR LOS DATOS
+        DEL CLIENTE Y LOS PRODUCTOS DE SU COMPRA.
+
+        */
+
+        // NOMBRE DEL CLIENTE
+        const nombreCliente = "EDUIN";
+
+        // PRODUCTOS SELECCIONADOS EN EL CARRITO
+        const productos = [
+
+            {
+                nombre: "KULT OVERSIZE TEE",
+                color: "Negro",
+                talla: "M",
+                cantidad: 1,
+                precio: 89900
+            },
+
+            {
+                nombre: "KULT BASIC TEE",
+                color: "Blanco",
+                talla: "L",
+                cantidad: 1,
+                precio: 69900
+            }
+
+        ];
+
+        // COSTO DE ENVÍO
+        const costoEnvio = 10000;
+
+
+        /*
+        ============================================
+        MOSTRAR NOMBRE DEL CLIENTE
+        ============================================
+        */
+
+        document.getElementById("nombreUsuario").textContent =
+            nombreCliente;
+
+
+        /*
+        ============================================
+        MOSTRAR PRODUCTOS DEL PEDIDO
+        ============================================
+        */
+
+        const listaProductos =
+            document.getElementById("listaProductos");
+
+        let subtotal = 0;
+
+        productos.forEach(producto => {
+
+            const precioTotal =
+                producto.precio * producto.cantidad;
+
+            subtotal += precioTotal;
+
+            const articulo = document.createElement("article");
+
+            articulo.classList.add("product-item");
+
+            articulo.innerHTML = `
+                <div class="product-info">
+
+                    <strong>${producto.nombre}</strong>
+
+                    <span>
+                        Color: ${producto.color}
+                        | Talla: ${producto.talla}
+                        | Cantidad: ${producto.cantidad}
+                    </span>
+
+                </div>
+
+                <strong class="product-price">
+                    ${formatearPrecio(precioTotal)}
+                </strong>
+            `;
+
+            listaProductos.appendChild(articulo);
+
+        });
+
+
+        /*
+        ============================================
+        CALCULAR TOTAL DEL PEDIDO
+        ============================================
+        */
+
+        const total = subtotal + costoEnvio;
+
+        document.getElementById("totalPedido").textContent =
+            formatearPrecio(total);
+
+
+        /*
+        ============================================
+        FORMATO DE PRECIOS
+        ============================================
+        */
+
+        function formatearPrecio(valor) {
+
+            return valor.toLocaleString("es-CO", {
+                style: "currency",
+                currency: "COP",
+                maximumFractionDigits: 0
+            }) + " COP";
+
+        }
+
+    </script>
+
+</body>
+</html>
