@@ -1,5 +1,3 @@
-import { colorSwatch } from '../../utils/catalogo'
-
 const GRAMAJES = [
   { id: 'heavy', etiqueta: 'Heavyweight (280+ GSM)', em: 'CORE', destacado: true },
   { id: 'ultra', etiqueta: 'Ultra-Heavy (350 GSM Raw)', em: 'SPEC', destacado: false },
@@ -80,14 +78,14 @@ export default function CatalogFilters({
       <div className="grp">
         <h3>Pigmento</h3>
         {colores.map((color) => (
-          <label className={`opt pig ${coloresSeleccionados.includes(color) ? 'seleccionado' : ''}`} key={color}>
-            <i className="sw" style={{ background: colorSwatch(color) }} />
+          <label className={`opt pig ${coloresSeleccionados.includes(color.nombre) ? 'seleccionado' : ''}`} key={color.nombre}>
+            <i className="sw" style={{ background: color.codigoColor }} />
             <input
               type="checkbox"
-              checked={coloresSeleccionados.includes(color)}
-              onChange={() => onToggleColor(color)}
+              checked={coloresSeleccionados.includes(color.nombre)}
+              onChange={() => onToggleColor(color.nombre)}
             />
-            {color}
+            {color.nombre}
           </label>
         ))}
       </div>

@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`categorias` (
   PRIMARY KEY (`id_categoria`),
   UNIQUE INDEX `id_categoria_UNIQUE` (`id_categoria` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 12
+AUTO_INCREMENT = 13
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`direcciones` (
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`pedidos` (
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -133,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`productos` (
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 505
+AUTO_INCREMENT = 506
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -149,6 +150,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`variantes` (
   `talla` VARCHAR(10) NOT NULL,
   `color` VARCHAR(50) NOT NULL,
   `stock` INT(10) UNSIGNED ZEROFILL NOT NULL,
+  `colorcode` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_variante`),
   INDEX `fk_variantes_productos` (`id_producto` ASC) VISIBLE,
   CONSTRAINT `fk_variantes_productos`
@@ -208,6 +210,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`pagos` (
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 

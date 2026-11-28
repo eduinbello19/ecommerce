@@ -27,7 +27,14 @@ export function calcularStockTotal(variantes = []) {
 }
 
 export function obtenerColoresUnicos(variantes = []) {
-  return [...new Set(variantes.map((variante) => variante.color).filter(Boolean))]
+  const colores = new Map()
+
+  variantes.forEach((variante) => {
+    if (!variante.color || colores.has(variante.color)) return
+    colores.set(variante.color, variante.colorCode || colorSwatch(variante.color))
+  })
+
+  return [...colores].map(([nombre, codigoColor]) => ({ nombre, codigoColor }))
 }
 
 export function colorSwatch(color) {

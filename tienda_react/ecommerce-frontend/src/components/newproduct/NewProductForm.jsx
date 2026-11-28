@@ -14,7 +14,7 @@ import {
   eliminarVariante,
   obtenerCatalogo,
 } from '../../services/catalogoService'
-import { normalizarRutaImagen } from '../../utils/catalogo'
+import { colorSwatch, normalizarRutaImagen } from '../../utils/catalogo'
 import {
   etiquetaVariante,
   nuevaVariante,
@@ -214,6 +214,7 @@ export default function NewProductForm() {
         idVariante: variante.idVariante,
         talla: variante.talla || 'M',
         color: variante.color || '',
+        colorCode: variante.colorCode || colorSwatch(variante.color),
         stock: String(variante.stock ?? 0),
       }))
 
@@ -237,6 +238,7 @@ export default function NewProductForm() {
       idVariante: variante.idVariante,
       talla: variante.talla,
       color: variante.color,
+      colorCode: variante.colorCode,
       stock: variante.stock,
     })))
     setVariantesEliminadas([])
@@ -359,6 +361,7 @@ export default function NewProductForm() {
           idProducto,
           talla: variante.talla,
           color: variante.color.trim(),
+          colorCode: String(variante.colorCode).trim().toUpperCase(),
           stock: Number(variante.stock),
         }
 
@@ -367,6 +370,7 @@ export default function NewProductForm() {
           const sinCambios = original
             && original.talla === datosVariante.talla
             && original.color === datosVariante.color
+            && String(original.colorCode || '').toUpperCase() === datosVariante.colorCode
             && Number(original.stock) === datosVariante.stock
 
           if (sinCambios) {

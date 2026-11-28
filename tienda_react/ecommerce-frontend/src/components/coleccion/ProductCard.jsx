@@ -7,7 +7,15 @@ export default function ProductCard({ producto, categoria, variantes, tallaSelec
   const stock = Number(variante?.stock || 0)
   const estado = estadoStock(stock)
   const rutaImagen = normalizarRutaImagen(producto.rutaImagen)
-  const colores = [...new Set(variantes.map((item) => item.color).filter(Boolean))].slice(0, 2)
+  const colores = []
+  variantes.forEach((item) => {
+    if (!item.color) return
+    const codigoColor = item.colorCode || colorSwatch(item.color)
+    if (!colores.some((color) => color.codigoColor === codigoColor)) {
+      colores.push({ codigoColor })
+    }
+  })
+  const swatches = colores.slice(0, 2)
 
   const textoBoton = estado === 'agotado' ? 'Agotado' : 'Comprar'
   const textoBadge = estado === 'agotado' ? 'Agotado' : estado === 'ultimas' ? 'Últimas unidades' : 'Nuevo drop'
@@ -29,11 +37,11 @@ export default function ProductCard({ producto, categoria, variantes, tallaSelec
         <div className="meta mono">
           <b>{categoria?.nombre || 'KULT STUDIO'} - {producto.gramajeGsm} GSM</b>
           <span>
-            {colores.map((color, indice) => (
+            {swatches.map((color, indice) => (
               <i
-                key={color}
+                key={color.codigoColor}
                 className={indice === 1 ? 'w' : ''}
-                style={{ background: colorSwatch(color), borderColor: colorSwatch(color) }}
+                style={{ background: color.codigoColor, borderColor: color.codigoColor }}
               />
             ))}
           </span>

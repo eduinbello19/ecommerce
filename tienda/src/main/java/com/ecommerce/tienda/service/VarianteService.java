@@ -58,6 +58,7 @@ public class VarianteService {
         actualExistente.setIdProducto(variante.getIdProducto());
         actualExistente.setTalla(variante.getTalla());
         actualExistente.setColor(variante.getColor());
+        actualExistente.setColorCode(variante.getColorCode());
         actualExistente.setStock(variante.getStock());
 
         return varianteRepository.save(actualExistente);
@@ -94,6 +95,13 @@ public class VarianteService {
             );
         }
 
+        if (variante.getColorCode() == null || !variante.getColorCode().trim().matches("^#[0-9a-fA-F]{6}$")) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "El código de color debe tener formato #RRGGBB"
+            );
+        }
+
         if (variante.getStock() == null || variante.getStock() < 0) {
             throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
@@ -103,5 +111,6 @@ public class VarianteService {
 
         variante.setTalla(variante.getTalla().trim());
         variante.setColor(variante.getColor().trim());
+        variante.setColorCode(variante.getColorCode().trim().toUpperCase());
     }
 }

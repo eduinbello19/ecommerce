@@ -20,6 +20,9 @@ public class VarianteModel {
     @Column(name = "color", length = 50)
     private String color;
 
+    @Column(name = "colorcode", length = 45)
+    private String colorCode;
+
     @Column(name = "stock")
     private Integer stock;
 
@@ -61,6 +64,14 @@ public class VarianteModel {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getColorCode() {
+        return colorCode;
+    }
+
+    public void setColorCode(String colorCode) {
+        this.colorCode = colorCode;
     }
 
     // Getter y Setter del stock

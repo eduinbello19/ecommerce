@@ -1,3 +1,5 @@
+import { colorSwatch } from './catalogo'
+
 export const TALLAS = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
 export const COLORES = ['Blanco', 'Negro', 'Gris', 'Rojo']
 
@@ -5,13 +7,14 @@ let contadorVariante = 0
 
 export function nuevaVariante(datos = {}) {
   contadorVariante += 1
+  const color = datos.color ?? 'Negro'
   return {
     key: `variante-${contadorVariante}`,
-    idVariante: null,
-    talla: 'M',
-    color: 'Negro',
-    stock: '',
-    ...datos,
+    idVariante: datos.idVariante ?? null,
+    talla: datos.talla ?? 'M',
+    color,
+    colorCode: datos.colorCode || colorSwatch(color),
+    stock: datos.stock ?? '',
   }
 }
 
@@ -47,6 +50,11 @@ function validarVariantes(variantes, errors) {
     const color = variante.color.trim()
     if (!color) errors[`color-${variante.key}`] = 'El color es obligatorio.'
     else if (color.length > 50) errors[`color-${variante.key}`] = 'Máximo 50 caracteres.'
+
+    const colorCode = String(variante.colorCode || '').trim()
+    if (!/^#[0-9a-fA-F]{6}$/.test(colorCode)) {
+      errors[`colorCode-${variante.key}`] = 'Ingresa un código hexadecimal válido (#RRGGBB).'
+    }
 
     if (variante.stock === '' || !Number.isInteger(Number(variante.stock)) || Number(variante.stock) < 0) {
       errors[`stock-${variante.key}`] = 'Ingresa un stock entero mayor o igual a cero.'

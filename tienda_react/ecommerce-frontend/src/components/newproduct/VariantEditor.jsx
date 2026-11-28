@@ -11,6 +11,7 @@ export default function VariantEditor({ variantes, errors, onChange, onRemove, o
         <span>#</span>
         <span>TALLA</span>
         <span>COLOR</span>
+        <span>HEX</span>
         <span>STOCK</span>
         <span>ACCIÓN</span>
       </div>
@@ -45,6 +46,29 @@ export default function VariantEditor({ variantes, errors, onChange, onRemove, o
               aria-label={`Color de la variante ${indice + 1}`}
             />
             {errors[`color-${variante.key}`] && <p className="field-error">{errors[`color-${variante.key}`]}</p>}
+          </div>
+
+          <div className="field">
+            <span className="variant-label">HEX</span>
+            <div className="variant-color">
+              <input
+                type="color"
+                value={/^#[0-9a-fA-F]{6}$/.test(variante.colorCode || '') ? variante.colorCode : '#000000'}
+                onChange={(event) => onChange(variante.key, 'colorCode', event.target.value.toUpperCase())}
+                disabled={disabled}
+                aria-label={`Selector de color de la variante ${indice + 1}`}
+              />
+              <input
+                type="text"
+                placeholder="#RRGGBB"
+                maxLength={7}
+                value={variante.colorCode ?? ''}
+                onChange={(event) => onChange(variante.key, 'colorCode', event.target.value.toUpperCase())}
+                disabled={disabled}
+                aria-label={`Código hexadecimal de la variante ${indice + 1}`}
+              />
+            </div>
+            {errors[`colorCode-${variante.key}`] && <p className="field-error">{errors[`colorCode-${variante.key}`]}</p>}
           </div>
 
           <div className="field">

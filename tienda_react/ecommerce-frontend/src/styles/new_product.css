@@ -34,7 +34,7 @@
 .new-product-page .variant-editor { border: 1px solid var(--line-soft); }
 .new-product-page .variant-head {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 0.7fr) 72px;
+  grid-template-columns: 32px minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 0.7fr) 72px;
   gap: 8px;
   padding: 8px 10px;
   background: #1f1f1f;
@@ -45,7 +45,7 @@
 }
 .new-product-page .variant-row {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 0.7fr) 72px;
+  grid-template-columns: 32px minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 0.7fr) 72px;
   gap: 8px;
   align-items: start;
   padding: 10px;
@@ -55,6 +55,15 @@
 .new-product-page .variant-row[data-estado='nueva'] .variant-index { color: #8f8f8f; }
 .new-product-page .variant-index { height: 32px; display: grid; place-items: center; font-size: 9px; }
 .new-product-page .variant-row .field { margin-bottom: 0; min-width: 0; }
+.new-product-page .variant-color { display: flex; gap: 4px; min-width: 0; }
+.new-product-page .variant-color input[type='color'] {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  padding: 2px;
+  cursor: pointer;
+}
+.new-product-page .variant-color input[type='text'] { min-width: 0; flex: 1; }
 .new-product-page .variant-label { display: none; }
 .new-product-page .variant-remove,
 .new-product-page .variant-add {
