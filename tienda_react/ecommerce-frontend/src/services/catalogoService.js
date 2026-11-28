@@ -41,6 +41,68 @@ export async function obtenerCatalogo({ incluirDetalles = false } = {}) {
   return { categorias, productos, variantes, detallesPedido }
 }
 
+export async function obtenerHistorialPedidos(idUsuario) {
+  const [catalogo, pedidos, pagos] = await Promise.all([
+    obtenerCatalogo({ incluirDetalles: true }),
+    request('/pedido'),
+    request('/pago'),
+  ])
+
+  const variantesPorId = new Map(
+    (catalogo.variantes || []).map((variante) => [Number(variante.idVariante), variante]),
+  )
+  const productosPorId = new Map(
+    (catalogo.productos || []).map((producto) => [Number(producto.idProducto), producto]),
+  )
+  const pagosPorPedido = new Map(
+    (pagos || []).map((pago) => [Number(pago.idPedido), pago]),
+  )
+  const detallesPedido = catalogo.detallesPedido || []
+  const detallesPorPedido = new Map()
+
+  detallesPedido.forEach((detalle) => {
+    const idPedido = Number(detalle.idPedido)
+    const detalles = detallesPorPedido.get(idPedido) || []
+    detalles.push(detalle)
+    detallesPorPedido.set(idPedido, detalles)
+  })
+
+  return (pedidos || [])
+    .filter((pedido) => Number(pedido.idUsuario) === Number(idUsuario))
+    .sort((primero, segundo) => new Date(segundo.fecha) - new Date(primero.fecha))
+    .map((pedido) => {
+      const idPedido = Number(pedido.idPedido)
+      const pago = pagosPorPedido.get(idPedido)
+      const items = (detallesPorPedido.get(idPedido) || []).map((detalle) => {
+        const variante = variantesPorId.get(Number(detalle.idVariante))
+        const producto = productosPorId.get(Number(variante?.idProducto))
+
+        return {
+          idVariante: detalle.idVariante,
+          nombreProducto: producto?.nombre || 'Producto no disponible',
+          rutaImagen: producto?.rutaImagen || '',
+          talla: variante?.talla || '',
+          color: variante?.color || '',
+          colorCode: variante?.colorCode || '',
+          cantidad: Number(detalle.cantidad || 0),
+          precioUnitario: Number(detalle.precioUnitario || 0),
+        }
+      })
+
+      return {
+        idPedido: pedido.idPedido,
+        fecha: pedido.fecha,
+        estado: pedido.estado || '',
+        subtotal: Number(pedido.subtotal || 0),
+        costoEnvio: Number(pedido.costoEnvio || 0),
+        total: Number(pedido.total || 0),
+        medioPago: pago?.medio || '',
+        fechaPago: pago?.fechaPago || null,
+        items,
+      }
+    })
+}
+
 export function crearCategoria(datos) {
   return jsonRequest('POST', '/categoria', datos)
 }

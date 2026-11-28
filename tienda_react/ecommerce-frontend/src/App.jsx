@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage'
 import ColeccionPage from './pages/ColeccionPage'
 import PasarelaPage from './pages/PasarelaPage'
 import NewProductPage from './pages/NewProductPage'
+import MisPedidosPage from './pages/MisPedidosPage'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/coleccion" element={<ColeccionPage />} />
       <Route path="/pasarela" element={<PasarelaPage />} />
       <Route path="/new_product" element={<NewProductPage />} />
+      <Route path="/mis_pedidos" element={<MisPedidosPage />} />
       <Route path="*" element={<Navigate to="/registro" replace />} />
     </Routes>
   )

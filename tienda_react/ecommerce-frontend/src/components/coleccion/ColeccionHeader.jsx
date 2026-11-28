@@ -28,7 +28,7 @@ export default function ColeccionHeader({ search, onSearchChange, cart, cartOpen
           <nav className={`main ${menuOpen ? 'open' : ''}`} id="nav" aria-label="Navegación principal">
             <Link to="/coleccion" className="on" aria-current="page">Colección</Link>
             <a href="#catalogo">Novedades</a>
-            <Link to="/coleccion">Gráficas</Link>
+            <Link to="/mis_pedidos">MIS PEDIDOS</Link>
             <Link to="/coleccion">Oversized</Link>
             <Link to="/login">Acceso Clientes</Link>
             <Link to="/registro">Registro</Link>

@@ -1,0 +1,170 @@
+.mis-pedidos-page .tools { display: none; }
+.mis-pedidos-page header.site .wrap { justify-content: space-between; }
+.mis-pedidos-page nav.main a.on { color: inherit; }
+.mis-pedidos-page nav.main a[href='/mis_pedidos'] { color: var(--accent); }
+
+.mis-pedidos-page .layout {
+  display: block;
+  max-width: 980px;
+  margin-inline: auto;
+  padding-block: clamp(24px, 4vw, 48px);
+}
+.mis-pedidos-page .lead { max-width: 640px; }
+.mis-pedidos-page .historial-resultado { margin-top: 32px; }
+
+.mis-pedidos-page .historial-aviso {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  padding: 32px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.mis-pedidos-page .historial-aviso h2 {
+  font-family: var(--display);
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.mis-pedidos-page .historial-aviso p {
+  max-width: 640px;
+  color: #bdbdbd;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.mis-pedidos-page .historial-error { color: #e5282b; }
+.mis-pedidos-page .historial-aviso .btn { text-decoration: none; }
+
+.mis-pedidos-page .historial-cabecera {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.mis-pedidos-page .historial-lista { display: grid; gap: 18px; }
+
+.mis-pedidos-page .pedido-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.mis-pedidos-page .pedido-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.mis-pedidos-page .pedido-numero {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.mis-pedidos-page .pedido-head h2 {
+  margin-top: 6px;
+  font-family: var(--display);
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.mis-pedidos-page .estado {
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.mis-pedidos-page .estado-pagado { border-color: rgba(196, 255, 0, 0.5); color: var(--accent); }
+.mis-pedidos-page .estado-enviado { border-color: #4b8cff; color: #8bb6ff; }
+.mis-pedidos-page .estado-entregado { border-color: #3fae7a; color: #7dd6a9; }
+.mis-pedidos-page .estado-pendiente { border-color: #d6a33c; color: #e8c36a; }
+
+.mis-pedidos-page .pedido-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+.mis-pedidos-page .pedido-items { padding: 6px 18px; }
+.mis-pedidos-page .pedido-item {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+}
+.mis-pedidos-page .pedido-item + .pedido-item { border-top: 1px solid var(--line-soft); }
+.mis-pedidos-page .pedido-imagen {
+  width: 68px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--line-soft);
+}
+.mis-pedidos-page .pedido-imagen img { width: 100%; height: 100%; object-fit: cover; }
+.mis-pedidos-page .pedido-imagen span {
+  color: #5e5e5e;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.mis-pedidos-page .pedido-info h3 {
+  font-family: var(--display);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.mis-pedidos-page .pedido-info p { margin-top: 5px; color: #bdbdbd; font-size: 9px; }
+.mis-pedidos-page .pedido-precio {
+  font-family: var(--mono);
+  font-size: 11px;
+  white-space: nowrap;
+}
+.mis-pedidos-page .pedido-sin-items {
+  padding: 18px 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.mis-pedidos-page .pedido-totales {
+  display: grid;
+  gap: 8px;
+  padding: 14px 18px 18px;
+  border-top: 1px solid var(--line-soft);
+}
+.mis-pedidos-page .total-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+.mis-pedidos-page .total-line.final {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  font-size: 11px;
+}
+.mis-pedidos-page .total-line.final strong:last-child { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .mis-pedidos-page .pedido-head { flex-direction: column; }
+  .mis-pedidos-page .pedido-item { grid-template-columns: 56px minmax(0, 1fr); }
+  .mis-pedidos-page .pedido-imagen { width: 56px; height: 64px; }
+  .mis-pedidos-page .pedido-precio { grid-column: 2; }
+  .mis-pedidos-page .historial-cabecera { flex-direction: column; }
+}
